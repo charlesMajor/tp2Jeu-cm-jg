@@ -19,9 +19,9 @@ SceneType TitleScene::update()
 {
     SceneType retval = getSceneType();
 
-    if (this->buttonClicked)
+    if (this->shouldStartGame)
     {
-        this->buttonClicked = false;
+        this->shouldStartGame = false;
         retval = SceneType::GAME_SCENE;
     }
 
@@ -30,19 +30,18 @@ SceneType TitleScene::update()
 
 void TitleScene::pause()
 {
-    this->titleMusic.stop();
+    //this->titleMusic.stop();
 }
 
 void TitleScene::unPause()
 {
-    this->titleMusic.play();
+    //this->titleMusic.play();
 }
 
 void TitleScene::draw(sf::RenderWindow& window) const
 {
-    window.draw(titleSprite);
-    window.draw(longGameText);
-    window.draw(shortGameText);
+    //window.draw(titleSprite);
+    window.draw(startGameText);
 }
 
 bool TitleScene::uninit()
@@ -57,27 +56,21 @@ bool TitleScene::init()
         return false;
     }
 
-    titleSprite.setTexture(contentManager.getTitleTexture());
-    titleSprite.setPosition(350, 150);
+    /*titleSprite.setTexture(contentManager.getTitleTexture());
+    titleSprite.setPosition(350, 150);*/
 
-    longGameText.setString("Cliquez-gauche ou appuyez sur Entrée pour jouer une partie courte");
-    longGameText.setFont(contentManager.getFont());
-    longGameText.setCharacterSize(30);
-    longGameText.setOutlineColor(sf::Color::White);
-    longGameText.setPosition(100, Game::WORLD_HEIGHT - 100);
+    startGameText.setString("Press any key to start");
+    startGameText.setFont(contentManager.getFont());
+    startGameText.setCharacterSize(30);
+    startGameText.setOutlineColor(sf::Color::White);
+    startGameText.setPosition(100, Game::WORLD_HEIGHT - 100);
 
-    shortGameText.setString("Cliquez-droit ou appuyez sur Spacebar pour jouer une partie longue");
-    shortGameText.setFont(contentManager.getFont());
-    shortGameText.setCharacterSize(30);
-    shortGameText.setOutlineColor(sf::Color::White);
-    shortGameText.setPosition(100, Game::WORLD_HEIGHT - 50);
-
-    if (!titleMusic.openFromFile("Assets\\Music\\TvTheme.ogg"))
+    /*if (!titleMusic.openFromFile("Assets\\Music\\TvTheme.ogg"))
     {
         return false;
     }
     titleMusic.setLoop(true);
-    titleMusic.play();
+    titleMusic.play();*/
 
     return true;
 }
@@ -96,33 +89,16 @@ bool TitleScene::handleEvents(sf::RenderWindow& window)
         }
         if (event.type == sf::Event::MouseButtonPressed)
         {
-            if (event.mouseButton.button == sf::Mouse::Left)
+            if (event.mouseButton.button == sf::Mouse::Left || event.mouseButton.button == sf::Mouse::Right)
             {
-                this->result.titleSceneResult.isLongGame = false;
-            }
-
-            if (event.mouseButton.button == sf::Mouse::Right)
-            {
-                this->result.titleSceneResult.isLongGame = true;
-            }
-            // ppoulin
-            // Tu ne dois pas démarrer la partie si n'importe quel bouton est appuyé
-            this->buttonClicked = true;
+                this->result.titleSceneResult.isInvincible = true;
+                this->shouldStartGame = true;
+            }            
         }
         if (event.type == sf::Event::KeyPressed)
         {
-            if (event.key.code == sf::Keyboard::Key::Enter)
-            {
-                this->result.titleSceneResult.isLongGame = false;
-            }
-               
-            if (event.key.code == sf::Keyboard::Key::Space)
-            {
-                this->result.titleSceneResult.isLongGame = true;
-            }
-            // ppoulin
-            // Tu ne dois pas démarrer la partie si n'importe quelle touche est appuyée
-            this->buttonClicked = true;
+            this->result.titleSceneResult.isInvincible = false;
+            this->shouldStartGame = true;
         }
     }
 

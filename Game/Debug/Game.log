@@ -1,1 +1,12 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppCommon.targets(2580,5): error MSB3030: Could not copy the file "C:\Users\charl\Desktop\Cegep\Session 4\Jeu video\TP2\TP2_ETU\extern\SFML\bin\openal32.dll" because it was not found.
+﻿  GameScene.cpp
+  Game.vcxproj -> T:\Debug\Game.lib
+  T:\Game\Assets\Fonts\segoepr.ttf -> T:\Debug\Assets\Fonts\segoepr.ttf
+  T:\Game\Assets\Music\GameTheme.ogg -> T:\Debug\Assets\Music\GameTheme.ogg
+  T:\Game\Assets\Music\TVTheme.ogg -> T:\Debug\Assets\Music\TVTheme.ogg
+  T:\Game\Assets\Sounds\Bulbasaur.ogg -> T:\Debug\Assets\Sounds\Bulbasaur.ogg
+  T:\Game\Assets\Sprites\Bulbasaur.png -> T:\Debug\Assets\Sprites\Bulbasaur.png
+  T:\Game\Assets\Sprites\End.png -> T:\Debug\Assets\Sprites\End.png
+  T:\Game\Assets\Sprites\Pokeball.png -> T:\Debug\Assets\Sprites\Pokeball.png
+  T:\Game\Assets\Sprites\Thumbs.db -> T:\Debug\Assets\Sprites\Thumbs.db
+  T:\Game\Assets\Sprites\Title.png -> T:\Debug\Assets\Sprites\Title.png
+  9 fichier(s) copié(s)

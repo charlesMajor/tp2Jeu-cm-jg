@@ -6,13 +6,13 @@
 #include "scenetype.h"
 #include <iostream>
 
-const int Game::WORLD_WIDTH = 1280;
-const int Game::WORLD_HEIGHT = 720;
+const int Game::WORLD_WIDTH = 740;
+const int Game::WORLD_HEIGHT = 920;
 const unsigned int Game::FRAME_RATE = 60;
 const unsigned int Game::DEFAULT_GAME_TIME = 30;
 const unsigned int Game::SHORT_GAME_TIME = 15;
-const unsigned int Game::GAME_WIDTH = 1280;
-const unsigned int Game::GAME_HEIGHT = 720;
+const unsigned int Game::GAME_WIDTH = 740;
+const unsigned int Game::GAME_HEIGHT = 920;
 
 Game::Game(std::string windowName)
   : gameName(windowName)

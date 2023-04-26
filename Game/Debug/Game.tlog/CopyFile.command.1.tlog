@@ -1,12 +1,12 @@
-^C:\USERS\CHARL\DESKTOP\CEGEP\SESSION 4\JEU VIDEO\TP2\TP2_ETU\EXTERN\SFML\BIN\OPENAL32.DLL
-C:\Users\charl\Desktop\Cegep\Session 4\Jeu video\TP2\TP2_ETU\Debug\openal32.dll
-^C:\USERS\CHARL\DESKTOP\CEGEP\SESSION 4\JEU VIDEO\TP2\TP2_ETU\EXTERN\SFML\BIN\SFML-AUDIO-D-2.DLL
-C:\Users\charl\Desktop\Cegep\Session 4\Jeu video\TP2\TP2_ETU\Debug\sfml-audio-d-2.dll
-^C:\USERS\CHARL\DESKTOP\CEGEP\SESSION 4\JEU VIDEO\TP2\TP2_ETU\EXTERN\SFML\BIN\SFML-GRAPHICS-D-2.DLL
-C:\Users\charl\Desktop\Cegep\Session 4\Jeu video\TP2\TP2_ETU\Debug\sfml-graphics-d-2.dll
-^C:\USERS\CHARL\DESKTOP\CEGEP\SESSION 4\JEU VIDEO\TP2\TP2_ETU\EXTERN\SFML\BIN\SFML-NETWORK-D-2.DLL
-C:\Users\charl\Desktop\Cegep\Session 4\Jeu video\TP2\TP2_ETU\Debug\sfml-network-d-2.dll
-^C:\USERS\CHARL\DESKTOP\CEGEP\SESSION 4\JEU VIDEO\TP2\TP2_ETU\EXTERN\SFML\BIN\SFML-SYSTEM-D-2.DLL
-C:\Users\charl\Desktop\Cegep\Session 4\Jeu video\TP2\TP2_ETU\Debug\sfml-system-d-2.dll
-^C:\USERS\CHARL\DESKTOP\CEGEP\SESSION 4\JEU VIDEO\TP2\TP2_ETU\EXTERN\SFML\BIN\SFML-WINDOW-D-2.DLL
-C:\Users\charl\Desktop\Cegep\Session 4\Jeu video\TP2\TP2_ETU\Debug\sfml-window-d-2.dll
+^T:\EXTERN\SFML\BIN\OPENAL32.DLL
+T:\Debug\openal32.dll
+^T:\EXTERN\SFML\BIN\SFML-AUDIO-D-2.DLL
+T:\Debug\sfml-audio-d-2.dll
+^T:\EXTERN\SFML\BIN\SFML-GRAPHICS-D-2.DLL
+T:\Debug\sfml-graphics-d-2.dll
+^T:\EXTERN\SFML\BIN\SFML-NETWORK-D-2.DLL
+T:\Debug\sfml-network-d-2.dll
+^T:\EXTERN\SFML\BIN\SFML-SYSTEM-D-2.DLL
+T:\Debug\sfml-system-d-2.dll
+^T:\EXTERN\SFML\BIN\SFML-WINDOW-D-2.DLL
+T:\Debug\sfml-window-d-2.dll
