@@ -2,7 +2,7 @@
 
 struct TitleSceneResult
 {
-  bool isLongGame;
+	bool isInvincible;
 };
 
 struct GameSceneResult

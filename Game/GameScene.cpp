@@ -105,11 +105,8 @@ bool GameScene::init()
   timeText.setPosition(800, 10);
   
   remainingTimeInGame = (float)Game::DEFAULT_GAME_TIME;
-  if (this->result.titleSceneResult.isLongGame == false)
-  {
-      remainingTimeInGame = (float)Game::SHORT_GAME_TIME;
-  }
-
+  std::cout << "invincible: " << this->result.titleSceneResult.isInvincible << std::endl;
+  
   score = 0;
   return true;
 }

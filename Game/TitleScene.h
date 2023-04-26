@@ -18,13 +18,9 @@ public:
 private:
 	TitleContentManager contentManager;
 
-	// ppoulin
-	// shouldStartGame aurait été un meilleur nom
-	// VAN-1
-	bool buttonClicked = false;
+	bool shouldStartGame = false;
 
-	sf::Text longGameText;
-	sf::Text shortGameText;
+	sf::Text startGameText;
 	sf::Sprite titleSprite;
 	sf::Music titleMusic;
 };
