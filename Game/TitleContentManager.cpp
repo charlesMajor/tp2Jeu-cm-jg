@@ -3,7 +3,12 @@
 
 bool TitleContentManager::loadContent()
 {
-	if (!titleTexture.loadFromFile("Assets\\Sprites\\Title.png"))
+	if (!background.loadFromFile("Assets\\Sprites\\SpaceBackground.png"))
+	{
+		return false;
+	}
+
+	if (!logo.loadFromFile("Assets\\Sprites\\logo.png"))
 	{
 		return false;
 	}
@@ -16,9 +21,14 @@ bool TitleContentManager::loadContent()
 	return true;
 }
 
-const sf::Texture& TitleContentManager::getTitleTexture() const
+const sf::Texture& TitleContentManager::getBackground() const
 {
-	return titleTexture;
+	return background;
+}
+
+const sf::Texture& TitleContentManager::getLogo() const
+{
+	return logo;
 }
 
 const sf::Font& TitleContentManager::getFont() const

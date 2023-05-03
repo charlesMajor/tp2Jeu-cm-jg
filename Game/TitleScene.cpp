@@ -40,7 +40,8 @@ void TitleScene::unPause()
 
 void TitleScene::draw(sf::RenderWindow& window) const
 {
-    //window.draw(titleSprite);
+    window.draw(background);
+    window.draw(logo);
     window.draw(startGameText);
 }
 
@@ -56,14 +57,16 @@ bool TitleScene::init()
         return false;
     }
 
-    /*titleSprite.setTexture(contentManager.getTitleTexture());
-    titleSprite.setPosition(350, 150);*/
+    background.setTexture(contentManager.getBackground());
+
+    logo.setTexture(contentManager.getLogo());
+    logo.setPosition(125, 150);
 
     startGameText.setString("Press any key to start");
     startGameText.setFont(contentManager.getFont());
     startGameText.setCharacterSize(30);
     startGameText.setOutlineColor(sf::Color::White);
-    startGameText.setPosition(100, Game::WORLD_HEIGHT - 100);
+    startGameText.setPosition(150, 500);
 
     /*if (!titleMusic.openFromFile("Assets\\Music\\TvTheme.ogg"))
     {

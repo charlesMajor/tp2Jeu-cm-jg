@@ -5,11 +5,13 @@ class TitleContentManager : public ContentManager
 public:
 	TitleContentManager();
 	virtual bool loadContent() override;
-	const sf::Texture& getTitleTexture() const;
+	const sf::Texture& getBackground() const;
+	const sf::Texture& getLogo() const;
 	const sf::Font& getFont() const;
 
 private:
-	sf::Texture titleTexture;
+	sf::Texture background;
+	sf::Texture logo;
 	sf::Font font;
 };
 

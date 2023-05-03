@@ -21,7 +21,8 @@ private:
 	bool shouldStartGame = false;
 
 	sf::Text startGameText;
-	sf::Sprite titleSprite;
+	sf::Sprite background;
+	sf::Sprite logo;
 	sf::Music titleMusic;
 };
 
