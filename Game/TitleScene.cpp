@@ -30,12 +30,12 @@ SceneType TitleScene::update()
 
 void TitleScene::pause()
 {
-    //this->titleMusic.stop();
+    this->titleMusic.stop();
 }
 
 void TitleScene::unPause()
 {
-    //this->titleMusic.play();
+    this->titleMusic.play();
 }
 
 void TitleScene::draw(sf::RenderWindow& window) const
@@ -68,12 +68,12 @@ bool TitleScene::init()
     startGameText.setOutlineColor(sf::Color::White);
     startGameText.setPosition(150, 500);
 
-    /*if (!titleMusic.openFromFile("Assets\\Music\\TvTheme.ogg"))
+    if (!titleMusic.openFromFile("Assets\\Sounds\\menuMusic.ogg"))
     {
         return false;
     }
     titleMusic.setLoop(true);
-    titleMusic.play();*/
+    titleMusic.play();
 
     return true;
 }

@@ -155,15 +155,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AttackEnemy.h" />
+    <ClInclude Include="BackLineEnemy.h" />
+    <ClInclude Include="Bullet.h" />
     <ClInclude Include="ContentManager.h" />
     <ClInclude Include="EndGameContentManager.h" />
     <ClInclude Include="EndGameScene.h" />
+    <ClInclude Include="FrontLineEnemy.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="GameContentManager.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="Pokeball.h" />
-    <ClInclude Include="Pokemon.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneResult.h" />
     <ClInclude Include="scenetype.h" />
@@ -173,14 +177,18 @@
     <ClInclude Include="TitleScene.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AttackEnemy.cpp" />
+    <ClCompile Include="BackLineEnemy.cpp" />
+    <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="EndGameContentManager.cpp" />
     <ClCompile Include="EndGameScene.cpp" />
+    <ClCompile Include="FrontLineEnemy.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="GameContentManager.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="Pokeball.cpp" />
-    <ClCompile Include="Pokemon.cpp" />
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

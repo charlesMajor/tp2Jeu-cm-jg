@@ -36,6 +36,7 @@ const sf::Font& TitleContentManager::getFont() const
 	return font;
 }
 
+
 TitleContentManager::TitleContentManager()
 	: ContentManager()
 {

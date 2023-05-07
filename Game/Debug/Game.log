@@ -1,14 +1,20 @@
-﻿  TitleScene.cpp
+﻿  GameScene.cpp
+T:\Game\GameScene.cpp(102,31): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+T:\Game\GameScene.cpp(111,37): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+T:\Game\GameScene.cpp(115,37): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+T:\Game\GameScene.cpp(123,33): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   Game.vcxproj -> T:\Debug\Game.lib
   T:\Game\Assets\Fonts\segoepr.ttf -> T:\Debug\Assets\Fonts\segoepr.ttf
   T:\Game\Assets\Music\GameTheme.ogg -> T:\Debug\Assets\Music\GameTheme.ogg
   T:\Game\Assets\Music\TVTheme.ogg -> T:\Debug\Assets\Music\TVTheme.ogg
-  T:\Game\Assets\Sounds\Bulbasaur.ogg -> T:\Debug\Assets\Sounds\Bulbasaur.ogg
-  T:\Game\Assets\Sprites\Bulbasaur.png -> T:\Debug\Assets\Sprites\Bulbasaur.png
+  T:\Game\Assets\Sounds\menuMusic.ogg -> T:\Debug\Assets\Sounds\menuMusic.ogg
+  T:\Game\Assets\Sprites\attackEnemy.PNG -> T:\Debug\Assets\Sprites\attackEnemy.PNG
+  T:\Game\Assets\Sprites\backLineEnemy.PNG -> T:\Debug\Assets\Sprites\backLineEnemy.PNG
   T:\Game\Assets\Sprites\End.png -> T:\Debug\Assets\Sprites\End.png
+  T:\Game\Assets\Sprites\frontLineEnemy.PNG -> T:\Debug\Assets\Sprites\frontLineEnemy.PNG
   T:\Game\Assets\Sprites\logo.png -> T:\Debug\Assets\Sprites\logo.png
   T:\Game\Assets\Sprites\Pokeball.png -> T:\Debug\Assets\Sprites\Pokeball.png
   T:\Game\Assets\Sprites\SpaceBackground.png -> T:\Debug\Assets\Sprites\SpaceBackground.png
   T:\Game\Assets\Sprites\SpaceBackgroundOld.png -> T:\Debug\Assets\Sprites\SpaceBackgroundOld.png
   T:\Game\Assets\Sprites\Thumbs.db -> T:\Debug\Assets\Sprites\Thumbs.db
-  11 fichier(s) copié(s)
+  13 fichier(s) copié(s)

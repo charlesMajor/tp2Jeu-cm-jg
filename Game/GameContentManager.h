@@ -5,15 +5,15 @@ class GameContentManager : public ContentManager
 public:
 	GameContentManager();
 	virtual bool loadContent() override;
-	const sf::Texture& getBulbasaurTexture() const;
-	const sf::SoundBuffer& getBulbasaurSoundBuffer() const;
-	const sf::Texture& getPokeballTexture() const;
+	const sf::Texture& getFrontLineEnemyTexture() const;
+	const sf::Texture& getAttackEnemyTexture() const;
+	const sf::Texture& getBackLineEnemyTexture() const;
 	const sf::Font& getFont() const;
 
 private:
-	sf::Texture bulbasaurTexture;
-	sf::Texture pokeballTexture;
-	sf::SoundBuffer bulbasaurSoundBuffer;
+	sf::Texture frontLineEnemyTexture;
+	sf::Texture attackEnemyTexture;
+	sf::Texture backLineEnemyTexture;
 	sf::Font font;
 };
 

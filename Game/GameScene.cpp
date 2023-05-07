@@ -5,6 +5,12 @@
 #include <iostream>
 
 const float GameScene::TIME_PER_FRAME = 1.0f / (float)Game::FRAME_RATE;
+const int GameScene::AMOUNT_FRONT_ENEMIES = 6;
+const int GameScene::AMOUNT_FRONT_ENEMIES_POOL = GameScene::AMOUNT_FRONT_ENEMIES + 2;
+const int GameScene::AMOUNT_ATTACK_ENEMIES = 10;
+const int GameScene::AMOUNT_ATTACK_ENEMIES_POOL = GameScene::AMOUNT_ATTACK_ENEMIES + 2;
+const int GameScene::AMOUNT_BACK_ENEMIES = 6;
+const int GameScene::AMOUNT_BACK_ENEMIES_POOL = GameScene::AMOUNT_BACK_ENEMIES + 2;
 
 GameScene::GameScene()
   : Scene(SceneType::GAME_SCENE)
@@ -26,23 +32,6 @@ SceneType GameScene::update()
   }
   
   remainingTimeInGame -= TIME_PER_FRAME;
-  if (remainingTimeInGame > 0)
-  {
-    bulbasaur.update(TIME_PER_FRAME);
-    pokeball.update(TIME_PER_FRAME, pokeballTargetPosition);
-
-
-
-    if (bulbasaur.collidesWith(pokeball))
-    {
-      score++;
-      pokeball.stop();
-      bulbasaur.onCatched();
-    }
-
-    scoreText.setString("Score: " + std::to_string(score));
-    timeText.setString("Temps: " + std::to_string((int)(remainingTimeInGame)));
-  }
   
   if (remainingTimeInGame <= 0)
   {
@@ -66,10 +55,29 @@ void GameScene::unPause()
 
 void GameScene::draw(sf::RenderWindow& window) const
 {
-  bulbasaur.draw(window);
-  pokeball.draw(window);
-  window.draw(scoreText);
-  window.draw(timeText);
+  for (const Enemy& current : frontLineEnemyPool)
+  {
+      if (current.isActive())
+      {
+          current.draw(window);
+      }
+  }
+
+  for (const Enemy& current : attackEnemyPool)
+  {
+      if (current.isActive())
+      {
+          current.draw(window);
+      }
+  }
+
+  for (const Enemy& current : backLineEnemyPool)
+  {
+      if (current.isActive())
+      {
+          current.draw(window);
+      }
+  }
 }
 
 bool GameScene::uninit()
@@ -83,27 +91,39 @@ bool GameScene::init()
   {
     return false;
   }
-  
-
+ 
   srand((unsigned)time(NULL));
-  sf::Vector2f pokeballInitialPosition((float)contentManager.getPokeballTexture().getSize().x,
-    (float)contentManager.getPokeballTexture().getSize().y);
-  pokeball.initialize(contentManager.getPokeballTexture(), pokeballInitialPosition);
-  pokeballTargetPosition = pokeballInitialPosition;
 
-  bulbasaur.initialize(contentManager.getBulbasaurTexture(), sf::Vector2f(Game::GAME_WIDTH - 100.0f, Game::GAME_HEIGHT - 100.0f));
-  bulbasaur.loadPokemonSpeaks(contentManager.getBulbasaurSoundBuffer());
+  initEnemiesPool();
 
-  scoreText.setFont(contentManager.getFont());
-  scoreText.setCharacterSize(50);
-  scoreText.setOutlineColor(sf::Color::White);
-  scoreText.setPosition(10, 10);
+  for (int i = 0; i < GameScene::AMOUNT_FRONT_ENEMIES; i++)
+  {
+      FrontLineEnemy& enemy = getAvailableFrontLineEnemy();
+      enemy.setPosition(i*100 + 75, 455);
+      enemy.activate();
+  }
 
-  timeText.setFont(contentManager.getFont());
-  timeText.setCharacterSize(50);
-  timeText.setOutlineColor(sf::Color::White);
-  timeText.setPosition(800, 10);
-  
+  for (int i = 0; i < GameScene::AMOUNT_ATTACK_ENEMIES; i++)
+  {
+      AttackEnemy& enemy = getAvailableAttackEnemy();
+      if (i <= 4)
+      {
+          enemy.setPosition(i * 110 + 100, 225);
+      }
+      else
+      {
+          enemy.setPosition(i * 110 - 450, 325);
+      }
+      enemy.activate();
+  }
+
+  for (int i = 0; i < GameScene::AMOUNT_BACK_ENEMIES; i++)
+  {
+      BackLineEnemy& enemy = getAvailableBackLineEnemy();
+      enemy.setPosition(i * 100 + 70, 125);
+      enemy.activate();
+  }
+
   remainingTimeInGame = (float)Game::DEFAULT_GAME_TIME;
   std::cout << "invincible: " << this->result.titleSceneResult.isInvincible << std::endl;
   
@@ -133,4 +153,78 @@ bool GameScene::handleEvents(sf::RenderWindow& window)
   }
 
   return retval;
+}
+
+void GameScene::initEnemiesPool()
+{
+    for (int i = 0; i < GameScene::AMOUNT_FRONT_ENEMIES_POOL; i++)
+    {
+        FrontLineEnemy current;
+        current.initialize(contentManager, sf::Vector2f(0, 0));
+        this->frontLineEnemyPool.push_back(current);
+    }
+
+    for (int i = 0; i < GameScene::AMOUNT_ATTACK_ENEMIES_POOL; i++)
+    {
+        AttackEnemy current;
+        current.initialize(contentManager, sf::Vector2f(0, 0));
+        this->attackEnemyPool.push_back(current);
+    }
+
+    for (int i = 0; i < AMOUNT_BACK_ENEMIES_POOL; i++)
+    {
+        BackLineEnemy current;
+        current.initialize(contentManager, sf::Vector2f(0, 0));
+        this->backLineEnemyPool.push_back(current);
+    }
+}
+
+FrontLineEnemy& GameScene::getAvailableFrontLineEnemy()
+{
+    for (FrontLineEnemy& enemy : frontLineEnemyPool)
+    {
+        if (!enemy.isActive())
+        {
+            return enemy;
+        }
+    }
+
+    FrontLineEnemy newEnemy = FrontLineEnemy();
+    newEnemy.initialize(contentManager, sf::Vector2f(0, 0));
+    frontLineEnemyPool.push_back(newEnemy);
+    return frontLineEnemyPool.back();
+}
+
+AttackEnemy& GameScene::getAvailableAttackEnemy()
+{
+    for (AttackEnemy& enemy : attackEnemyPool)
+    {
+        if (!enemy.isActive())
+        {
+            return enemy;
+        }
+    }
+
+    AttackEnemy newEnemy = AttackEnemy();
+    newEnemy.initialize(contentManager, sf::Vector2f(0, 0));
+    attackEnemyPool.push_back(newEnemy);
+    return attackEnemyPool.back();
+
+    return newEnemy;
+}
+
+BackLineEnemy& GameScene::getAvailableBackLineEnemy()
+{
+    for (BackLineEnemy& enemy : backLineEnemyPool)
+    {
+        if (!enemy.isActive())
+        {
+            return enemy;
+        }
+    }
+
+    BackLineEnemy newEnemy = BackLineEnemy();
+    newEnemy.initialize(contentManager, sf::Vector2f(0, 0));
+    backLineEnemyPool.push_back(newEnemy);
+    return backLineEnemyPool.back();
 }

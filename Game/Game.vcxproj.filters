@@ -31,6 +31,12 @@
     <Filter Include="Fichiers sources\Scenes">
       <UniqueIdentifier>{e635f09c-ff66-45e4-a39d-2f8126a6eb4a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers sources\Enemies">
+      <UniqueIdentifier>{ff56f5c4-0ab6-461d-b7af-853287b51bdd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Enemies">
+      <UniqueIdentifier>{bbdf7e14-2450-405b-b0aa-7824d03b963a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="targetver.h">
@@ -66,9 +72,6 @@
     <ClInclude Include="Pokeball.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="Pokemon.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="EndGameContentManager.h">
       <Filter>Fichiers d%27en-tête\ContentManagers</Filter>
     </ClInclude>
@@ -80,6 +83,21 @@
     </ClInclude>
     <ClInclude Include="EndGameScene.h">
       <Filter>Fichiers d%27en-tête\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Fichiers d%27en-tête\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="FrontLineEnemy.h">
+      <Filter>Fichiers d%27en-tête\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="BackLineEnemy.h">
+      <Filter>Fichiers d%27en-tête\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackEnemy.h">
+      <Filter>Fichiers d%27en-tête\Enemies</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -104,9 +122,6 @@
     <ClCompile Include="Pokeball.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="Pokemon.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="EndGameContentManager.cpp">
       <Filter>Fichiers sources\ContentManagers</Filter>
     </ClCompile>
@@ -118,6 +133,21 @@
     </ClCompile>
     <ClCompile Include="EndGameScene.cpp">
       <Filter>Fichiers sources\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Fichiers sources\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="FrontLineEnemy.cpp">
+      <Filter>Fichiers sources\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="BackLineEnemy.cpp">
+      <Filter>Fichiers sources\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackEnemy.cpp">
+      <Filter>Fichiers sources\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

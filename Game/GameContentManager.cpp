@@ -3,18 +3,18 @@
 
 bool GameContentManager::loadContent()
 {
-	if (!pokeballTexture.loadFromFile("Assets\\Sprites\\Pokeball.png"))
+
+	if (!frontLineEnemyTexture.loadFromFile("Assets\\Sprites\\frontLineEnemy.png"))
 	{
 		return false;
 	}
 
-	if (!bulbasaurTexture.loadFromFile("Assets\\Sprites\\Bulbasaur.png"))
+	if (!attackEnemyTexture.loadFromFile("Assets\\Sprites\\attackEnemy.png"))
 	{
 		return false;
 	}
 
-	//SFML supports the audio file formats WAV, OGG/Vorbis and FLAC. Due to licensing issues MP3 is not supported.
-	if (!bulbasaurSoundBuffer.loadFromFile("Assets\\Sounds\\Bulbasaur.ogg"))
+	if (!backLineEnemyTexture.loadFromFile("Assets\\Sprites\\backLineEnemy.png"))
 	{
 		return false;
 	}
@@ -27,34 +27,19 @@ bool GameContentManager::loadContent()
 	return true;
 }
 
-/// <summary>
-/// ATTENTION: Seul moment où le type de retour peut-être constant et où ça peut avoir une importance.
-/// Quand on ne retourne pas une référence, le retour est copié, alors que ce soit constant ou non n'a aucune importance.
-/// 
-/// Sauf que en mettant la méthode const (le const au bout de la signature), ça la fait en sorte que l'objet ne peut être modifié par cette méthode
-/// La référence revoyée ne peut donc pas elle non plus permettre de modifier l'objet.
-/// 
-/// Une référence const (le const au début de la signature) est une référence inaltérable.  Le code qui utilise cette référence
-/// Peut seulement lire l'objet référé, pas le modifier.
-/// 
-/// Or le sprite veut justement une référence constante, il a le droit de lire la texture, mais jamais de la modifier.
-/// (Même chose pour les autres classes utilisatrices de ressorces)
-/// 
-/// LE CONTENT MANAGER S'ASSURE DONC QUE NOS RESSOURCES RESTENT INTÈGRES
-/// </summary>
-const sf::Texture& GameContentManager::getBulbasaurTexture() const
+const sf::Texture& GameContentManager::getFrontLineEnemyTexture() const
 {
-	return bulbasaurTexture;
+	return frontLineEnemyTexture;
 }
 
-const sf::Texture& GameContentManager::getPokeballTexture() const
+const sf::Texture& GameContentManager::getAttackEnemyTexture() const
 {
-	return pokeballTexture;
+	return attackEnemyTexture;
 }
 
-const sf::SoundBuffer& GameContentManager::getBulbasaurSoundBuffer() const
+const sf::Texture& GameContentManager::getBackLineEnemyTexture() const
 {
-	return bulbasaurSoundBuffer;
+	return backLineEnemyTexture;
 }
 
 const sf::Font& GameContentManager::getFont() const
