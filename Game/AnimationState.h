@@ -2,7 +2,10 @@
 
 enum class State
 {
-	NONE,
+	FROM_ENEMY,
+	ATTACK_ENEMY,
+	BACK_ENEMY,
 	IDLE,
-	EXPLODING
+	EXPLODING,
+	NONE
 };

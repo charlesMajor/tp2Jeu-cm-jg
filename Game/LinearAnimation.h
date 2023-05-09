@@ -5,6 +5,7 @@ class LinearAnimation :
 	public Animation
 {
 public:
+
 	virtual void update(float deltaT, const Inputs& inputs) override;
 	virtual unsigned int getNextFrame() const override;
 	virtual float getPercentage() const override;
@@ -16,3 +17,4 @@ private:
 	bool repeated;
 
 };
+

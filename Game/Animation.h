@@ -14,7 +14,6 @@ public:
 	float getTimeInCurrentState() const;
 	virtual bool isOver() const;
 	virtual float getPercentage() const = 0;
-
 protected:
 	Animation(sf::Sprite& s, float length);
 	std::vector<AnimationFrame> frames;
