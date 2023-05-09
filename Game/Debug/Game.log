@@ -1,8 +1,26 @@
-﻿  GameScene.cpp
+﻿  stdafx.cpp
+  AttackEnemy.cpp
+  BackLineEnemy.cpp
+  Bullet.cpp
+  EndGameContentManager.cpp
+  EndGameScene.cpp
+T:\Game\EndGameScene.cpp(64,54): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+T:\Game\EndGameScene.cpp(70,57): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  FrontLineEnemy.cpp
+  game.cpp
+  GameContentManager.cpp
+  GameObject.cpp
+  GameScene.cpp
 T:\Game\GameScene.cpp(102,31): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 T:\Game\GameScene.cpp(111,37): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 T:\Game\GameScene.cpp(115,37): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 T:\Game\GameScene.cpp(123,33): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Pokeball.cpp
+  Enemy.cpp
+  Scene.cpp
+  TitleContentManager.cpp
+  TitleScene.cpp
+  Generating Code...
   Game.vcxproj -> T:\Debug\Game.lib
   T:\Game\Assets\Fonts\segoepr.ttf -> T:\Debug\Assets\Fonts\segoepr.ttf
   T:\Game\Assets\Music\GameTheme.ogg -> T:\Debug\Assets\Music\GameTheme.ogg
