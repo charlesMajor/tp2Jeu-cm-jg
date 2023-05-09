@@ -2,7 +2,6 @@
 #include "Bullet.h"
 #include "ContentManager.h"
 #include "game.h"
-#include <iostream>
 
 const float Bullet::BULLET_SPEED = 600;
 
@@ -16,18 +15,17 @@ Bullet::Bullet(const sf::Vector2f& initialPosition, const sf::Vector2f& initialT
 Bullet::Bullet(const Bullet& src)
 	:GameObject(src)
 {
-	this->setTexture(*src.getTexture());
-	this->setPosition(src.getPosition());
-	this->shotSound.setBuffer(*src.shotSound.getBuffer());
+	GameObject::initialize(*src.getTexture(), src.getPosition());
+	this->bulletSound.setBuffer(*src.bulletSound.getBuffer());
 }
+
 Bullet& Bullet::operator=(const Bullet& rhs)
 {
 	if (this != &rhs)
 	{
 		GameObject::operator=(rhs);
-		this->setTexture(*rhs.getTexture());
-		this->setPosition(rhs.getPosition());
-		this->shotSound.setBuffer(*rhs.shotSound.getBuffer());
+		GameObject::initialize(*rhs.getTexture(), rhs.getPosition());
+		this->bulletSound.setBuffer(*rhs.bulletSound.getBuffer());
 	}
 	return *this;
 }
@@ -37,25 +35,26 @@ void Bullet::draw(sf::RenderWindow& window) const
 	window.draw(*this);
 }
 
-
-bool Bullet::update(float elapsedTime, sf::Vector2f topLeftView, sf::Vector2f botRightView)
+bool Bullet::update(float elapsedTime)
 {
 	move(sf::Vector2f(cos(getRotationAngleInRadians()) * BULLET_SPEED * elapsedTime, sin(getRotationAngleInRadians()) * BULLET_SPEED * elapsedTime));
-	if (getPosition().x > botRightView.x || getPosition().x < topLeftView.x || getPosition().y > botRightView.y || getPosition().y < topLeftView.y)
-		this->deactivate();
-	return true;
+	if (getPosition().x > Game::WORLD_WIDTH || getPosition().x < 0 || getPosition().y > Game::WORLD_HEIGHT || getPosition().y < 0)
+	{
+		deactivate();
+		return true;
+	}
 	return false;
 }
 
-/*void Bullet::initialize(const ContentManager& contentManager, const sf::Vector2f& initialPosition)
+void Bullet::initialize(const sf::Texture& texture, const sf::Vector2f& initialPosition, const sf::SoundBuffer& sb)
 {
-	GameObject::initialize(contentManager.getNormalBulletTexture(), initialPosition);
+	GameObject::initialize(texture, initialPosition);
 
-	shotSound.setBuffer(contentManager.getShotSoundBuffer());
-}*/
+	bulletSound.setBuffer(sb);
+}
 
 void Bullet::activate()
 {
-	active = true;
-	this->shotSound.play();
+	bulletSound.play();
+	GameObject::activate();
 }

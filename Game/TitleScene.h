@@ -1,10 +1,10 @@
 #pragma once
 #include "Scene.h"
 #include "TitleContentManager.h"
+
 class TitleScene :
 	public Scene
 {
-public:
 public:
 	TitleScene();
 	~TitleScene();
@@ -15,6 +15,7 @@ public:
 	virtual bool init() override;
 	virtual bool uninit() override;
 	virtual bool handleEvents(sf::RenderWindow& window) override;
+	
 private:
 	TitleContentManager contentManager;
 
@@ -25,4 +26,3 @@ private:
 	sf::Sprite logo;
 	sf::Music titleMusic;
 };
-

@@ -12,7 +12,6 @@ TitleScene::TitleScene()
 
 TitleScene::~TitleScene()
 {
-
 }
 
 SceneType TitleScene::update()

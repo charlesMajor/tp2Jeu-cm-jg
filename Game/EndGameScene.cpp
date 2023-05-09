@@ -10,7 +10,6 @@ EndGameScene::EndGameScene()
 
 EndGameScene::~EndGameScene()
 {
-
 }
 
 SceneType EndGameScene::update()
@@ -32,7 +31,6 @@ void EndGameScene::pause()
 
 void EndGameScene::unPause()
 {
-
 }
 
 void EndGameScene::draw(sf::RenderWindow& window) const
@@ -75,7 +73,6 @@ bool EndGameScene::init()
     }
     endMusic.setLoop(true);
     endMusic.play();
-
 
     return true;
 }

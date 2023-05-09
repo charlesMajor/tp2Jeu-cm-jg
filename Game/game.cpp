@@ -6,13 +6,12 @@
 #include "scenetype.h"
 #include <iostream>
 
-const int Game::WORLD_WIDTH = 640;
-const int Game::WORLD_HEIGHT = 920;
+const int Game::WORLD_WIDTH = 720;
+const int Game::WORLD_HEIGHT = 960;
 const unsigned int Game::FRAME_RATE = 60;
-const unsigned int Game::DEFAULT_GAME_TIME = 30;
-const unsigned int Game::SHORT_GAME_TIME = 15;
-const unsigned int Game::GAME_WIDTH = 640;
-const unsigned int Game::GAME_HEIGHT = 920;
+const unsigned int Game::DEFAULT_GAME_TIME = 60;
+const unsigned int Game::GAME_WIDTH = 720;
+const unsigned int Game::GAME_HEIGHT = 960;
 
 Game::Game(std::string windowName)
   : gameName(windowName)
@@ -31,7 +30,6 @@ void Game::run()
     bool windowIsClosed = handleEvents();
     if (windowIsClosed || true == update())
     {
-      // On termine "normalement" l'application
       break;
     }
     else
@@ -41,7 +39,6 @@ void Game::run()
       window.display();
     }
   }
-
   uninit();
 }
 
@@ -52,7 +49,6 @@ bool Game::handleEvents()
     retval = scenes.top()->handleEvents(window);
   return retval;
 }
-
 
 bool Game::update()
 {
@@ -80,7 +76,6 @@ bool Game::update()
     }
   }
   return gameMustEnd;
-
 }
 
 bool Game::popScene(bool initNextScene)
@@ -100,7 +95,6 @@ bool Game::popScene(bool initNextScene)
         scenes.top()->unPause();
     }
   }
-
   return scenes.empty();
 }
 
@@ -113,7 +107,6 @@ bool Game::pushScene(Scene* newScene)
       scenes.top()->pause();
     scenes.push(newScene);
   }
-
   return retval;
 }
 
@@ -130,7 +123,7 @@ bool Game::init()
   window.create(sf::VideoMode(Game::GAME_WIDTH, Game::GAME_HEIGHT, 32), gameName);
   window.setFramerateLimit(FRAME_RATE);
 
-  return pushScene(new TitleScene());
+  return pushScene(new InitialScene());
 }
 
 bool Game::uninit()
@@ -142,33 +135,31 @@ bool Game::uninit()
   return true;
 }
 
-
 Scene* Game::getNextScene(SceneType type) const
 {
   Scene* scene =nullptr;
   switch (type)
   {
-  case SceneType::GAME_SCENE:
-  {
-    scene = new GameScene();
-    break;
-  }
-  case SceneType::TITLE_SCENE:
-  {
-      scene = new TitleScene();
-      break;
-  }
-  case SceneType::END_SCENE:
-  {
-      scene = new EndGameScene();
-      break;
-  }
-  default:
-  {
-    scene = nullptr;
-    break;
-  }
+      case SceneType::GAME_SCENE:
+      {
+          scene = new GameScene();
+          break;
+      }
+      case SceneType::TITLE_SCENE:
+      {
+          scene = new TitleScene();
+          break;
+      }
+      case SceneType::END_SCENE:
+      {
+          scene = new EndGameScene();
+          break;
+      }
+      default:
+      {
+        scene = nullptr;
+        break;
+      }
   }
   return scene;
 }
-
