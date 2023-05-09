@@ -157,6 +157,10 @@
   <ItemGroup>
     <ClInclude Include="AttackEnemy.h" />
     <ClInclude Include="BackLineEnemy.h" />
+    <ClInclude Include="AnimatedGameObject.h" />
+    <ClInclude Include="Animation.h" />
+    <ClInclude Include="AnimationFrame.h" />
+    <ClInclude Include="AnimationState.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="ContentManager.h" />
     <ClInclude Include="EndGameContentManager.h" />
@@ -166,8 +170,14 @@
     <ClInclude Include="GameContentManager.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameScene.h" />
+    <ClInclude Include="GameHud.h" />
+    <ClInclude Include="Inputs.h" />
+    <ClInclude Include="LinearAnimation.h" />
+    <ClInclude Include="PlayerExplodingAnimation.h" />
+    <ClInclude Include="PlayerIdleAnimation.h" />
     <ClInclude Include="Pokeball.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneResult.h" />
     <ClInclude Include="scenetype.h" />
@@ -179,6 +189,9 @@
   <ItemGroup>
     <ClCompile Include="AttackEnemy.cpp" />
     <ClCompile Include="BackLineEnemy.cpp" />
+    <ClCompile Include="AnimatedGameObject.cpp" />
+    <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="AnimationFrame.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="EndGameContentManager.cpp" />
     <ClCompile Include="EndGameScene.cpp" />
@@ -187,8 +200,14 @@
     <ClCompile Include="GameContentManager.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameScene.cpp" />
+    <ClCompile Include="GameHud.cpp" />
+    <ClCompile Include="Inputs.cpp" />
+    <ClCompile Include="LinearAnimation.cpp" />
+    <ClCompile Include="PlayerExplodingAnimation.cpp" />
+    <ClCompile Include="PlayerIdleAnimation.cpp" />
     <ClCompile Include="Pokeball.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

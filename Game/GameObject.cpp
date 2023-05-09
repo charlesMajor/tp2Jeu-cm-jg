@@ -55,7 +55,6 @@ float GameObject::getRotationAngleInRadians() const
   return getRotation() / RADIANS_TO_DEGREE;
 }
 
-
 void GameObject::setRotationAngleRadians(const float angle)
 {
   setRotation(angle * RADIANS_TO_DEGREE);
@@ -73,6 +72,7 @@ void GameObject::initialize(const sf::Texture& texture, const sf::Vector2f& init
   setOrigin(sf::Vector2f(rect.width / 2.0f, rect.height / 2.0f));
   setPosition(initialPoistion);
 }
+
 bool GameObject::init(const ContentManager& contentManager)
 {
   return true;
@@ -82,6 +82,7 @@ bool GameObject::update(float deltaT)
 {
   return false;
 }
+
 bool GameObject::update(float deltaT, const Inputs& inputs)
 {
   return false;

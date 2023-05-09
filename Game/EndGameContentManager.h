@@ -1,5 +1,6 @@
 #pragma once
 #include "ContentManager.h"
+
 class EndGameContentManager : public ContentManager
 {
 public:
@@ -12,6 +13,3 @@ private:
 	sf::Texture endTexture;
 	sf::Font font;
 };
-
-
-

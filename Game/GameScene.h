@@ -1,11 +1,13 @@
 #pragma once
 #include "Scene.h"
-#include "Pokeball.h"
 #include "Enemy.h"
 #include "FrontLineEnemy.h"
 #include "AttackEnemy.h"
 #include "BackLineEnemy.h"
+#include "Player.h"
 #include "GameContentManager.h"
+#include "GameHud.h"
+#include "Inputs.h"
 #include "Bullet.h"
 
 class GameScene :
@@ -13,13 +15,19 @@ class GameScene :
 {
 public:
   static const float TIME_PER_FRAME;
+  static const float KEYBOARD_SPEED;
+  static const float GAMEPAD_SPEEDRATIO;
+  static const int CONTROLLER_DEAD_ZONE;
+  static const int MAX_RECOIL;
+  static const int NB_BULLETS;
+
   static const int AMOUNT_FRONT_ENEMIES;
   static const int AMOUNT_FRONT_ENEMIES_POOL;
   static const int AMOUNT_ATTACK_ENEMIES;
   static const int AMOUNT_ATTACK_ENEMIES_POOL;
   static const int AMOUNT_BACK_ENEMIES;
   static const int AMOUNT_BACK_ENEMIES_POOL;
-public:
+
   GameScene();
   ~GameScene();
   virtual SceneType update() override;
@@ -29,26 +37,36 @@ public:
   virtual bool init() override;
   virtual bool uninit() override;
   virtual bool handleEvents(sf::RenderWindow& window) override;
-private:
-	void initEnemiesPool();
-	FrontLineEnemy& getAvailableFrontLineEnemy();
-	AttackEnemy& getAvailableAttackEnemy();
-	BackLineEnemy& getAvailableBackLineEnemy();
 
-  sf::Vector2f pokeballTargetPosition;
+private:
+  GameContentManager contentManager;
+  GameHud hud;
+
   float remainingTimeInGame;
 
-  int score;
-  GameContentManager contentManager;
+  sf::Sprite backgroundSprite;
+  sf::Music gameMusic;
 
-  std::list<Bullet> bulletPool;
   std::list<FrontLineEnemy> frontLineEnemyPool;
   std::list<AttackEnemy> attackEnemyPool;
   std::list<BackLineEnemy> backLineEnemyPool;
 
-  sf::Text scoreText;
-  sf::Text timeText;
+  int score;
+  Inputs inputs;
+  float handleControllerDeadZone(float analogInput);
+
+  Player player;
+  std::list<Bullet> playerBullets;
+  int recoil = 0;
+  void createNewBullet();
+  void fireBullet(Bullet& bullet);
+  Bullet& getAvaiableBullet();
+  
+  void initEnemiesPool();
+  FrontLineEnemy& getAvailableFrontLineEnemy();
+  AttackEnemy& getAvailableAttackEnemy();
+  BackLineEnemy& getAvailableBackLineEnemy();
+  std::list<Bullet> enemyBullets;
 
   bool wentToEndScene = false;
 };
-

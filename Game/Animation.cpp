@@ -6,7 +6,10 @@ Animation::Animation(sf::Sprite& s, float length)
 	, lengthInSeconds(length)
 	, timeInCurrentState(0)
 {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 649d856d8c9f5154b8109d6952eec4fac508ec81
 }
 
 void Animation::reset()

@@ -1,1 +1,5 @@
 .vs/
+Debug
+extern
+*.opendb
+*.opensdf

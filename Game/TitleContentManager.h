@@ -1,5 +1,6 @@
 #pragma once
 #include "ContentManager.h"
+
 class TitleContentManager : public ContentManager
 {
 public:
@@ -14,6 +15,3 @@ private:
 	sf::Texture logo;
 	sf::Font font;
 };
-
-
-

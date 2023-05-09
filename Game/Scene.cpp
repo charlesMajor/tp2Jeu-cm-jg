@@ -6,22 +6,18 @@ SceneResult Scene::result;
 Scene::Scene(SceneType type)
   : sceneType(type)
 {
-
 }
 
 Scene::~Scene()
 {
-
 }
 
 void Scene::pause()
 {
-
 }
 
 void Scene::unPause()
 {
- 
 }
 
 bool Scene::handleEvents(sf::RenderWindow& window)
