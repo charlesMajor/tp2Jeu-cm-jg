@@ -95,6 +95,7 @@ bool TitleScene::handleEvents(sf::RenderWindow& window)
 {
     bool retval = false;
     sf::Event event;
+
     while (window.pollEvent(event))
     {
         //x sur la fenêtre
@@ -105,18 +106,14 @@ bool TitleScene::handleEvents(sf::RenderWindow& window)
         }
         if (event.type == sf::Event::MouseButtonPressed)
         {
-            if (event.mouseButton.button == sf::Mouse::Left || event.mouseButton.button == sf::Mouse::Right)
-            {
-                this->result.titleSceneResult.isInvincible = true;
-                this->shouldStartGame = true;
-            }            
+            this->result.titleSceneResult.isInvincible = true;
+            this->shouldStartGame = true;
         }
-        if (event.type == sf::Event::KeyPressed)
+        if (event.type == sf::Event::KeyPressed || event.type == sf::Event::JoystickButtonPressed)
         {
             this->result.titleSceneResult.isInvincible = false;
             this->shouldStartGame = true;
         }
     }
-
     return retval;
 }

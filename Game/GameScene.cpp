@@ -6,7 +6,7 @@
 
 const float GameScene::TIME_PER_FRAME = 1.0f / (float)Game::FRAME_RATE;
 const float GameScene::KEYBOARD_SPEED = 5.0f;
-const float GameScene::GAMEPAD_SPEEDRATIO = 50.0f;
+const float GameScene::GAMEPAD_SPEEDRATIO = 20.0f;
 const int GameScene::CONTROLLER_DEAD_ZONE = 20;
 
 const int GameScene::MAX_RECOIL = 20;
@@ -213,7 +213,7 @@ bool GameScene::handleEvents(sf::RenderWindow& window)
     if (sf::Joystick::isConnected(0))
     {
         //TODO: Vérifier
-        //inputs.moveFactor = -handleControllerDeadZone(sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::X)) / GAMEPAD_SPEEDRATIO;
+        inputs.moveFactor = handleControllerDeadZone(sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::X)) / GAMEPAD_SPEEDRATIO;
         inputs.fireBullet = sf::Joystick::isButtonPressed(0, 0) && (recoil == 0);
     }
     else {
