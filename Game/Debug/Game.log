@@ -1,8 +1,18 @@
-﻿  GameScene.cpp
+﻿  AttackEnemy.cpp
+  BackLineEnemy.cpp
+  Enemy.cpp
+  FrontLineEnemy.cpp
+  GameContentManager.cpp
+  GameScene.cpp
 T:\Game\GameScene.cpp(102,31): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 T:\Game\GameScene.cpp(111,37): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 T:\Game\GameScene.cpp(115,37): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 T:\Game\GameScene.cpp(123,33): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Pokeball.cpp
+  TitleContentManager.cpp
+  TitleScene.cpp
+  game.cpp
+  Generating Code...
   Game.vcxproj -> T:\Debug\Game.lib
   T:\Game\Assets\Fonts\segoepr.ttf -> T:\Debug\Assets\Fonts\segoepr.ttf
   T:\Game\Assets\Music\GameTheme.ogg -> T:\Debug\Assets\Music\GameTheme.ogg
