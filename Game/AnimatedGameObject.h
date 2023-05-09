@@ -2,16 +2,11 @@
 #include "GameObject.h"
 #include "AnimationState.h"
 #include "Animation.h"
-<<<<<<< HEAD
+
 class ContentManager;
-
-struct Inputs;
-=======
-
 struct Inputs;
 class ContentManager;
 
->>>>>>> 649d856d8c9f5154b8109d6952eec4fac508ec81
 class AnimatedGameObject :
     public GameObject
 {
@@ -40,11 +35,4 @@ protected:
     ContentManager* contentManager;
 private:
     AnimatedGameObject& operator=(const AnimatedGameObject&);
-<<<<<<< HEAD
-
-
 };
-
-=======
-};
->>>>>>> 649d856d8c9f5154b8109d6952eec4fac508ec81

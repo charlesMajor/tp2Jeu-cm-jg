@@ -8,7 +8,7 @@ Enemy::Enemy()
 }
 
 Enemy::Enemy(const Enemy& src)
-    : GameObject(src)
+    : AnimatedGameObject(src)
 {
     setTexture(*src.getTexture());
 
