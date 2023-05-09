@@ -24,6 +24,11 @@ void GameHud::initialize(const GameContentManager& contentManager)
 	lifeTxt.setOutlineColor(sf::Color::White);
 	lifeTxt.setCharacterSize(TXT_CHAR_SIZE);
 	lifeTxt.setPosition(GAP_FROM_BORDER, Game::GAME_HEIGHT - (GAP_FROM_BORDER + TXT_CHAR_SIZE));
+
+	timeLeftTxt.setFont(contentManager.getFont());
+	timeLeftTxt.setOutlineColor(sf::Color::White);
+	timeLeftTxt.setCharacterSize(TXT_CHAR_SIZE);
+	timeLeftTxt.setPosition(Game::GAME_WIDTH / 2 + GAP_FROM_BORDER * 4 + TXT_CHAR_SIZE, GAP_FROM_BORDER);
 }
 
 void GameHud::draw(sf::RenderWindow& window)  const
@@ -31,10 +36,12 @@ void GameHud::draw(sf::RenderWindow& window)  const
 	window.setView(hudView);
 	window.draw(scoreTxt);
 	window.draw(lifeTxt);
+	window.draw(timeLeftTxt);
 }
 
-void GameHud::setText(int score, int lifeLeft)
+void GameHud::setText(int score, int lifeLeft, float timeLeft)
 {
 	scoreTxt.setString("Score : " + std::to_string(score));
 	lifeTxt.setString("Lives : " + std::to_string(lifeLeft));
+	timeLeftTxt.setString("Time : " + std::to_string(timeLeft).substr(0, 5));
 }

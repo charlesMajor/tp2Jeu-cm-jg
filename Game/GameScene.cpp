@@ -18,9 +18,11 @@ const int GameScene::FRONT_ENEMIES_Y_POSITION = 455;
 
 const int GameScene::AMOUNT_ATTACK_ENEMIES = 10;
 const int GameScene::AMOUNT_ATTACK_ENEMIES_POOL = GameScene::AMOUNT_ATTACK_ENEMIES + 2;
+const int GameScene::ATTACK_ENEMIES_Y_POSITION = 225;
 
 const int GameScene::AMOUNT_BACK_ENEMIES = 6;
 const int GameScene::AMOUNT_BACK_ENEMIES_POOL = GameScene::AMOUNT_BACK_ENEMIES + 2;
+const int GameScene::BACK_ENEMIES_Y_POSITION = 125;
 
 GameScene::GameScene()
   : Scene(SceneType::GAME_SCENE)
@@ -69,7 +71,7 @@ SceneType GameScene::update()
 
     player.update(TIME_PER_FRAME, inputs);
 
-    hud.setText(score, player.getLifeLeft());
+    hud.setText(score, player.getLifeLeft(), remainingTimeInGame);
   }
   else {
       if (wentToEndScene) {
@@ -162,11 +164,11 @@ bool GameScene::init()
       AttackEnemy& enemy = getAvailableAttackEnemy();
       if (i < (AMOUNT_ATTACK_ENEMIES / 2))
       {
-          enemy.setPosition(i * 110 + 100, 225);
+          enemy.setPosition(i * 110 + 100, ATTACK_ENEMIES_Y_POSITION);
       }
       else
       {
-          enemy.setPosition(i * 110 - 450, 325);
+          enemy.setPosition(i * 110 - 450, ATTACK_ENEMIES_Y_POSITION + 100);
       }
       enemy.activate();
   }
@@ -174,7 +176,7 @@ bool GameScene::init()
   for (int i = 0; i < GameScene::AMOUNT_BACK_ENEMIES; i++)
   {
       BackLineEnemy& enemy = getAvailableBackLineEnemy();
-      enemy.setPosition(i * 100 + 70, 125);
+      enemy.setPosition(i * 100 + 70, BACK_ENEMIES_Y_POSITION);
       enemy.activate();
   }
 

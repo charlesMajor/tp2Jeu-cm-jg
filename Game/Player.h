@@ -6,6 +6,7 @@ class Player : public AnimatedGameObject
 {
 public:
 	static const int MAX_LIFE;
+	static const float OPACITY_GAIN;
 
 	Player();
 	virtual bool init(const ContentManager& contentManager) override;
@@ -19,5 +20,5 @@ private:
 	const void onHit();
 
 	int life;
-	bool isDead; //TODO:: Voir si nécessaire ?
+	bool isHit;
 };

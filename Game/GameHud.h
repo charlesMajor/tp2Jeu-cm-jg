@@ -12,11 +12,12 @@ public:
 	GameHud();
 	void draw(sf::RenderWindow& window)  const;
 	void initialize(const GameContentManager& contentManager);
-	void setText(int score, int lifeLeft);
+	void setText(int score, int lifeLeft, float timeLeft);
 
 private:
 	sf::View hudView;
 
 	sf::Text scoreTxt;
 	sf::Text lifeTxt;
+	sf::Text timeLeftTxt;
 };
