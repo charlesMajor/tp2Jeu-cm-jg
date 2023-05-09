@@ -1,65 +1,22 @@
-<<<<<<< HEAD
-﻿  stdafx.cpp
-  AttackEnemy.cpp
-  BackLineEnemy.cpp
-  Bullet.cpp
-  EndGameContentManager.cpp
-  EndGameScene.cpp
-T:\Game\EndGameScene.cpp(64,54): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-T:\Game\EndGameScene.cpp(70,57): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  FrontLineEnemy.cpp
-  game.cpp
-  GameContentManager.cpp
-  GameObject.cpp
-  GameScene.cpp
-T:\Game\GameScene.cpp(102,31): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-T:\Game\GameScene.cpp(111,37): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-T:\Game\GameScene.cpp(115,37): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-T:\Game\GameScene.cpp(123,33): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  Pokeball.cpp
-  Enemy.cpp
-  Scene.cpp
-  TitleContentManager.cpp
+﻿  AnimatedGameObject.cpp
   TitleScene.cpp
   Generating Code...
   Game.vcxproj -> T:\Debug\Game.lib
   T:\Game\Assets\Fonts\segoepr.ttf -> T:\Debug\Assets\Fonts\segoepr.ttf
   T:\Game\Assets\Music\GameTheme.ogg -> T:\Debug\Assets\Music\GameTheme.ogg
+  T:\Game\Assets\Music\SkyFire (Title Screen).ogg -> T:\Debug\Assets\Music\SkyFire (Title Screen).ogg
   T:\Game\Assets\Music\TVTheme.ogg -> T:\Debug\Assets\Music\TVTheme.ogg
   T:\Game\Assets\Sounds\menuMusic.ogg -> T:\Debug\Assets\Sounds\menuMusic.ogg
+  T:\Game\Assets\Sounds\Shot01.ogg -> T:\Debug\Assets\Sounds\Shot01.ogg
   T:\Game\Assets\Sprites\attackEnemy.PNG -> T:\Debug\Assets\Sprites\attackEnemy.PNG
   T:\Game\Assets\Sprites\backLineEnemy.PNG -> T:\Debug\Assets\Sprites\backLineEnemy.PNG
+  T:\Game\Assets\Sprites\Bullet.png -> T:\Debug\Assets\Sprites\Bullet.png
   T:\Game\Assets\Sprites\End.png -> T:\Debug\Assets\Sprites\End.png
   T:\Game\Assets\Sprites\frontLineEnemy.PNG -> T:\Debug\Assets\Sprites\frontLineEnemy.PNG
+  T:\Game\Assets\Sprites\GalagaTexture.png -> T:\Debug\Assets\Sprites\GalagaTexture.png
   T:\Game\Assets\Sprites\logo.png -> T:\Debug\Assets\Sprites\logo.png
-  T:\Game\Assets\Sprites\Pokeball.png -> T:\Debug\Assets\Sprites\Pokeball.png
+  T:\Game\Assets\Sprites\PlayerShip.png -> T:\Debug\Assets\Sprites\PlayerShip.png
   T:\Game\Assets\Sprites\SpaceBackground.png -> T:\Debug\Assets\Sprites\SpaceBackground.png
   T:\Game\Assets\Sprites\SpaceBackgroundOld.png -> T:\Debug\Assets\Sprites\SpaceBackgroundOld.png
   T:\Game\Assets\Sprites\Thumbs.db -> T:\Debug\Assets\Sprites\Thumbs.db
-  13 fichier(s) copié(s)
-=======
-﻿  AttackEnemy.cpp
-  BackLineEnemy.cpp
-  AnimatedGameObject.cpp
-  FrontLineEnemy.cpp
-  game.cpp
-  GameScene.cpp
-C:\Users\charl\Desktop\Cegep\Session 4\Jeu video\TP2\TP2_ETU\Game\GameScene.cpp(153,31): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\charl\Desktop\Cegep\Session 4\Jeu video\TP2\TP2_ETU\Game\GameScene.cpp(162,37): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\charl\Desktop\Cegep\Session 4\Jeu video\TP2\TP2_ETU\Game\GameScene.cpp(166,37): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\charl\Desktop\Cegep\Session 4\Jeu video\TP2\TP2_ETU\Game\GameScene.cpp(174,33): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  Pokeball.cpp
-  Enemy.cpp
-  Player.cpp
-C:\Users\charl\Desktop\Cegep\Session 4\Jeu video\TP2\TP2_ETU\Game\Player.cpp(21,47): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-  TitleScene.cpp
-  Generating Code...
-  Game.vcxproj -> C:\Users\charl\Desktop\Cegep\Session 4\Jeu video\TP2\TP2_ETU\Debug\Game.lib
-  Nombre de paramètres non valide
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppCommon.targets(155,5): error MSB3073: The command "xcopy /S /F /R /Y /I C:\Users\charl\Desktop\Cegep\Session 4\Jeu video\TP2\TP2_ETU\Game\Assets C:\Users\charl\Desktop\Cegep\Session 4\Jeu video\TP2\TP2_ETU\Debug\Assets\
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppCommon.targets(155,5): error MSB3073: :VCEnd" exited with code 4.
->>>>>>> main
+  17 fichier(s) copié(s)

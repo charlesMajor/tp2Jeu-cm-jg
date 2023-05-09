@@ -1,16 +1,5 @@
 #pragma once
 
-<<<<<<< HEAD
-
-enum class State
-{
-	SHIP,
-	IDLE,
-	EXPLODING,
-	NONE,
-	IDLE,
-	EXPLODING
-=======
 enum class State
 {
 	FROM_ENEMY,
@@ -18,6 +7,5 @@ enum class State
 	BACK_ENEMY,
 	IDLE,
 	EXPLODING,
-	NONE,
->>>>>>> main
+	NONE
 };
