@@ -14,8 +14,11 @@ const int GameScene::NB_BULLETS = 10;
 
 const int GameScene::AMOUNT_FRONT_ENEMIES = 6;
 const int GameScene::AMOUNT_FRONT_ENEMIES_POOL = GameScene::AMOUNT_FRONT_ENEMIES + 2;
+const int GameScene::FRONT_ENEMIES_Y_POSITION = 455;
+
 const int GameScene::AMOUNT_ATTACK_ENEMIES = 10;
 const int GameScene::AMOUNT_ATTACK_ENEMIES_POOL = GameScene::AMOUNT_ATTACK_ENEMIES + 2;
+
 const int GameScene::AMOUNT_BACK_ENEMIES = 6;
 const int GameScene::AMOUNT_BACK_ENEMIES_POOL = GameScene::AMOUNT_BACK_ENEMIES + 2;
 
@@ -150,14 +153,14 @@ bool GameScene::init()
   for (int i = 0; i < GameScene::AMOUNT_FRONT_ENEMIES; i++)
   {
       FrontLineEnemy& enemy = getAvailableFrontLineEnemy();
-      enemy.setPosition(i*100 + 75, 455);
+      enemy.setPosition(i*100 + 75, FRONT_ENEMIES_Y_POSITION);
       enemy.activate();
   }
 
   for (int i = 0; i < GameScene::AMOUNT_ATTACK_ENEMIES; i++)
   {
       AttackEnemy& enemy = getAvailableAttackEnemy();
-      if (i <= 4)
+      if (i < (AMOUNT_ATTACK_ENEMIES / 2))
       {
           enemy.setPosition(i * 110 + 100, 225);
       }
