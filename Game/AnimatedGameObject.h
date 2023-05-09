@@ -3,6 +3,7 @@
 #include "AnimationState.h"
 #include "Animation.h"
 
+class ContentManager;
 struct Inputs;
 class ContentManager;
 
