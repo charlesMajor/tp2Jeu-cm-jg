@@ -2,13 +2,20 @@
 #include "AnimatedGameObject.h"
 #include "Animation.h"
 
+<<<<<<< HEAD
 AnimatedGameObject::AnimatedGameObject()
     : currentState(State::NONE)
+=======
+AnimatedGameObject::AnimatedGameObject() : currentState(State::NONE)
+>>>>>>> main
     , contentManager(nullptr)
 {
 }
 
+<<<<<<< HEAD
 }
+=======
+>>>>>>> main
 AnimatedGameObject::~AnimatedGameObject()
 {
     for (auto const& anim : animations)
@@ -17,12 +24,18 @@ AnimatedGameObject::~AnimatedGameObject()
     }
     animations.clear();
 }
+<<<<<<< HEAD
 
 AnimatedGameObject::AnimatedGameObject(const AnimatedGameObject& src)
     :GameObject(src)
     , contentManager(src.contentManager)
 {
 
+=======
+AnimatedGameObject::AnimatedGameObject(const AnimatedGameObject& src)
+    :GameObject(src), contentManager(src.contentManager)
+{
+>>>>>>> main
 }
 
 void AnimatedGameObject::draw(sf::RenderWindow& window) const
@@ -36,8 +49,11 @@ bool AnimatedGameObject::update(float deltaT, const Inputs& inputs)
     bool retval = GameObject::update(deltaT);
     if (false == retval)
         animations[currentState]->update(deltaT, inputs);
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> main
     return retval;
 }
 
@@ -54,4 +70,8 @@ void AnimatedGameObject::activate()
         anim.second->reset();
     }
     GameObject::activate();
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> main

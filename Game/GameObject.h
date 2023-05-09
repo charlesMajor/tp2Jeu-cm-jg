@@ -1,6 +1,8 @@
 #pragma once
+
 struct Inputs;
 class ContentManager;
+
 class GameObject : public sf::Sprite
 {
 public:
@@ -17,7 +19,6 @@ public:
 	virtual bool isActive() const;
 	virtual bool collidesWith(const GameObject& other) const;
 
-
 	float getRotationAngleInRadians() const;
 	void setRotationAngleRadians(const float angle);
 	virtual void rotateInRadians(const float angle);
@@ -26,4 +27,3 @@ protected:
 	float getAngleWith(const GameObject& other) const;
 	bool active;
 };
-

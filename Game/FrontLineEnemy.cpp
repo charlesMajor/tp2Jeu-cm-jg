@@ -9,6 +9,7 @@ FrontLineEnemy::FrontLineEnemy()
     : Enemy()
 {
 }
+
 FrontLineEnemy::FrontLineEnemy(const FrontLineEnemy& src)
     : Enemy(src)
 {

@@ -9,6 +9,7 @@ AttackEnemy::AttackEnemy()
     : Enemy()
 {
 }
+
 AttackEnemy::AttackEnemy(const AttackEnemy& src)
     : Enemy(src)
 {

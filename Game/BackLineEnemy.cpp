@@ -8,6 +8,7 @@ BackLineEnemy::BackLineEnemy()
     : Enemy()
 {
 }
+
 BackLineEnemy::BackLineEnemy(const BackLineEnemy& src)
     : Enemy(src)
 {

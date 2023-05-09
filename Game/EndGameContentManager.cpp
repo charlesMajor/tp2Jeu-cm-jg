@@ -4,14 +4,10 @@
 bool EndGameContentManager::loadContent()
 {
 	if (!endTexture.loadFromFile("Assets\\Sprites\\End.png"))
-	{
 		return false;
-	}
 
 	if (!font.loadFromFile("Assets\\Fonts\\segoepr.ttf"))
-	{
 		return false;
-	}
 
 	return true;
 }
@@ -30,4 +26,3 @@ EndGameContentManager::EndGameContentManager()
 	: ContentManager()
 {
 }
-

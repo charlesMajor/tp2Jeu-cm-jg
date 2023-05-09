@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿  stdafx.cpp
   AttackEnemy.cpp
   BackLineEnemy.cpp
@@ -36,3 +37,29 @@ T:\Game\GameScene.cpp(123,33): warning C4244: 'argument': conversion from 'int' 
   T:\Game\Assets\Sprites\SpaceBackgroundOld.png -> T:\Debug\Assets\Sprites\SpaceBackgroundOld.png
   T:\Game\Assets\Sprites\Thumbs.db -> T:\Debug\Assets\Sprites\Thumbs.db
   13 fichier(s) copié(s)
+=======
+﻿  AttackEnemy.cpp
+  BackLineEnemy.cpp
+  AnimatedGameObject.cpp
+  FrontLineEnemy.cpp
+  game.cpp
+  GameScene.cpp
+C:\Users\charl\Desktop\Cegep\Session 4\Jeu video\TP2\TP2_ETU\Game\GameScene.cpp(153,31): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\charl\Desktop\Cegep\Session 4\Jeu video\TP2\TP2_ETU\Game\GameScene.cpp(162,37): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\charl\Desktop\Cegep\Session 4\Jeu video\TP2\TP2_ETU\Game\GameScene.cpp(166,37): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\charl\Desktop\Cegep\Session 4\Jeu video\TP2\TP2_ETU\Game\GameScene.cpp(174,33): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Pokeball.cpp
+  Enemy.cpp
+  Player.cpp
+C:\Users\charl\Desktop\Cegep\Session 4\Jeu video\TP2\TP2_ETU\Game\Player.cpp(21,47): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  TitleScene.cpp
+  Generating Code...
+  Game.vcxproj -> C:\Users\charl\Desktop\Cegep\Session 4\Jeu video\TP2\TP2_ETU\Debug\Game.lib
+  Nombre de paramètres non valide
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppCommon.targets(155,5): error MSB3073: The command "xcopy /S /F /R /Y /I C:\Users\charl\Desktop\Cegep\Session 4\Jeu video\TP2\TP2_ETU\Game\Assets C:\Users\charl\Desktop\Cegep\Session 4\Jeu video\TP2\TP2_ETU\Debug\Assets\
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppCommon.targets(155,5): error MSB3073: :VCEnd" exited with code 4.
+>>>>>>> main

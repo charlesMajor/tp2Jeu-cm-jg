@@ -36,6 +36,12 @@
     </Filter>
     <Filter Include="Fichiers d%27en-tête\Enemies">
       <UniqueIdentifier>{bbdf7e14-2450-405b-b0aa-7824d03b963a}</UniqueIdentifier>
+	</Filter>
+    <Filter Include="Fichiers sources\Animations">
+      <UniqueIdentifier>{1992ec59-10ab-48a1-958b-4f5e3ea83fdb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Animations">
+      <UniqueIdentifier>{af040848-05c4-4543-9e98-e6928452c612}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -72,6 +78,9 @@
     <ClInclude Include="Pokeball.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
     <ClInclude Include="EndGameContentManager.h">
       <Filter>Fichiers d%27en-tête\ContentManagers</Filter>
     </ClInclude>
@@ -98,6 +107,36 @@
     </ClInclude>
     <ClInclude Include="AttackEnemy.h">
       <Filter>Fichiers d%27en-tête\Enemies</Filter>
+	</ClInclude>
+    <ClInclude Include="GameHud.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerExplodingAnimation.h">
+      <Filter>Fichiers d%27en-tête\Animations</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Fichiers d%27en-tête\Animations</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationState.h">
+      <Filter>Fichiers d%27en-tête\Animations</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationFrame.h">
+      <Filter>Fichiers d%27en-tête\Animations</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimatedGameObject.h">
+      <Filter>Fichiers d%27en-tête\Animations</Filter>
+    </ClInclude>
+    <ClInclude Include="Inputs.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="LinearAnimation.h">
+      <Filter>Fichiers d%27en-tête\Animations</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerIdleAnimation.h">
+      <Filter>Fichiers d%27en-tête\Animations</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -120,6 +159,9 @@
       <Filter>Fichiers sources\Scenes</Filter>
     </ClCompile>
     <ClCompile Include="Pokeball.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="EndGameContentManager.cpp">
@@ -148,6 +190,33 @@
     </ClCompile>
     <ClCompile Include="AttackEnemy.cpp">
       <Filter>Fichiers sources\Enemies</Filter>
+	</ClCompile>
+    <ClCompile Include="GameHud.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerExplodingAnimation.cpp">
+      <Filter>Fichiers sources\Animations</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Fichiers sources\Animations</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationFrame.cpp">
+      <Filter>Fichiers sources\Animations</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimatedGameObject.cpp">
+      <Filter>Fichiers sources\Animations</Filter>
+    </ClCompile>
+    <ClCompile Include="Inputs.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="LinearAnimation.cpp">
+      <Filter>Fichiers sources\Animations</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerIdleAnimation.cpp">
+      <Filter>Fichiers sources\Animations</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
