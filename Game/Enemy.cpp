@@ -3,12 +3,12 @@
 #include "game.h"
 
 Enemy::Enemy()
-  : AnimatedGameObject()
+  : GameObject()
 {
 }
 
 Enemy::Enemy(const Enemy& src)
-    : AnimatedGameObject(src)
+    : GameObject(src)
 {
     setTexture(*src.getTexture());
 

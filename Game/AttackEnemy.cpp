@@ -15,9 +15,10 @@ AttackEnemy::AttackEnemy(const AttackEnemy& src)
 {
 }
 
-void AttackEnemy::initialize(const GameContentManager& contentManager, const sf::Vector2f& initialPosition)
+bool AttackEnemy::initialize(const GameContentManager& contentManager, const sf::Vector2f& initialPosition)
 {
     GameObject::initialize(contentManager.getAttackEnemyTexture(), initialPosition);
+    return true;
 }
 
 bool AttackEnemy::update(float elapsedTime)

@@ -7,7 +7,7 @@ class FrontLineEnemy : public Enemy
 public:
 	FrontLineEnemy();
 	FrontLineEnemy(const FrontLineEnemy& src);
-	void initialize(const GameContentManager& contentManager, const sf::Vector2f& initialPosition) override;
+	bool initialize(const GameContentManager& contentManager, const sf::Vector2f& initialPosition) override;
 	bool update(float elapsedTime) override;
 };
 

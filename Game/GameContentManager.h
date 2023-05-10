@@ -9,7 +9,7 @@ public:
 	
 	const sf::Texture& getPlayerAnimationTexture() const;
 	const sf::SoundBuffer& getPlayerShotSoundBuffer() const;
-	
+
 	const sf::Texture& getFrontLineEnemyTexture() const;
 	const sf::Texture& getAttackEnemyTexture() const;
 	const sf::Texture& getBackLineEnemyTexture() const;

@@ -166,6 +166,7 @@
     <ClInclude Include="EndGameContentManager.h" />
     <ClInclude Include="EndGameScene.h" />
     <ClInclude Include="FrontLineEnemy.h" />
+    <ClInclude Include="FrontLineEnemyAnimation.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="GameContentManager.h" />
     <ClInclude Include="GameObject.h" />
@@ -196,6 +197,7 @@
     <ClCompile Include="EndGameContentManager.cpp" />
     <ClCompile Include="EndGameScene.cpp" />
     <ClCompile Include="FrontLineEnemy.cpp" />
+    <ClCompile Include="FrontLineEnemyAnimation.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="GameContentManager.cpp" />
     <ClCompile Include="GameObject.cpp" />

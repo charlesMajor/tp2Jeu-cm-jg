@@ -36,7 +36,7 @@
     </Filter>
     <Filter Include="Fichiers d%27en-tête\Enemies">
       <UniqueIdentifier>{bbdf7e14-2450-405b-b0aa-7824d03b963a}</UniqueIdentifier>
-	</Filter>
+    </Filter>
     <Filter Include="Fichiers sources\Animations">
       <UniqueIdentifier>{1992ec59-10ab-48a1-958b-4f5e3ea83fdb}</UniqueIdentifier>
     </Filter>
@@ -107,7 +107,7 @@
     </ClInclude>
     <ClInclude Include="AttackEnemy.h">
       <Filter>Fichiers d%27en-tête\Enemies</Filter>
-	</ClInclude>
+    </ClInclude>
     <ClInclude Include="GameHud.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
@@ -137,6 +137,9 @@
     </ClInclude>
     <ClInclude Include="Bullet.h">
       <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="FrontLineEnemyAnimation.h">
+      <Filter>Fichiers d%27en-tête\Animations</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -190,7 +193,7 @@
     </ClCompile>
     <ClCompile Include="AttackEnemy.cpp">
       <Filter>Fichiers sources\Enemies</Filter>
-	</ClCompile>
+    </ClCompile>
     <ClCompile Include="GameHud.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
@@ -217,6 +220,9 @@
     </ClCompile>
     <ClCompile Include="Bullet.cpp">
       <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FrontLineEnemyAnimation.cpp">
+      <Filter>Fichiers sources\Animations</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

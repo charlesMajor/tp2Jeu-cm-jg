@@ -41,6 +41,21 @@ SceneType GameScene::update()
 
   if (remainingTimeInGame > 0)
   {
+      for (FrontLineEnemy& enemy : frontLineEnemyPool)
+      {
+          enemy.update(TIME_PER_FRAME);
+      }
+
+      for (AttackEnemy& enemy : attackEnemyPool)
+      {
+          enemy.update(TIME_PER_FRAME);
+      }
+
+      for (BackLineEnemy& enemy : backLineEnemyPool)
+      {
+          enemy.update(TIME_PER_FRAME);
+      }
+
     recoil = std::max(0, recoil - 1);
     for (Bullet& bullet : playerBullets)
     {
@@ -96,19 +111,19 @@ void GameScene::draw(sf::RenderWindow& window) const
 {
   window.draw(backgroundSprite);
 
-  for (const Enemy& current : frontLineEnemyPool)
+  for (const FrontLineEnemy& current : frontLineEnemyPool)
   {
       if (current.isActive())
           current.draw(window);
   }
 
-  for (const Enemy& current : attackEnemyPool)
+  for (const AttackEnemy& current : attackEnemyPool)
   {
       if (current.isActive())
           current.draw(window);
   }
 
-  for (const Enemy& current : backLineEnemyPool)
+  for (const BackLineEnemy& current : backLineEnemyPool)
   {
       if (current.isActive())
           current.draw(window);

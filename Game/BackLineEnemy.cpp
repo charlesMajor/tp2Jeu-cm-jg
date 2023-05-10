@@ -14,9 +14,10 @@ BackLineEnemy::BackLineEnemy(const BackLineEnemy& src)
 {
 }
 
-void BackLineEnemy::initialize(const GameContentManager& contentManager, const sf::Vector2f& initialPosition)
+bool BackLineEnemy::initialize(const GameContentManager& contentManager, const sf::Vector2f& initialPosition)
 {
     GameObject::initialize(contentManager.getBackLineEnemyTexture(), initialPosition);
+    return true;
 }
 
 bool BackLineEnemy::update(float elapsedTime)

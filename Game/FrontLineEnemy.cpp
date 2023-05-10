@@ -1,6 +1,7 @@
 /* Devient invincible pour quelques secondes lorsqu'il n'a presque plus de vie */
 #include "stdafx.h"
 #include "FrontLineEnemy.h"
+#include "FrontLineEnemyAnimation.h"
 #include "game.h"
 
 static const int BASE_HEALTH = 10;
@@ -15,9 +16,10 @@ FrontLineEnemy::FrontLineEnemy(const FrontLineEnemy& src)
 {
 }
 
-void FrontLineEnemy::initialize(const GameContentManager& contentManager, const sf::Vector2f& initialPosition)
+bool FrontLineEnemy::initialize(const GameContentManager& contentManager, const sf::Vector2f& initialPosition)
 {
     GameObject::initialize(contentManager.getFrontLineEnemyTexture(), initialPosition);
+    return true;
 }
 
 bool FrontLineEnemy::update(float elapsedTime)
