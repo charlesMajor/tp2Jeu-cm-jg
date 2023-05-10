@@ -59,13 +59,13 @@ bool TitleScene::init()
     background.setTexture(contentManager.getBackground());
 
     logo.setTexture(contentManager.getLogo());
-    logo.setPosition(125, 150);
+    logo.setPosition(165, 150);
 
     startGameText.setString("Press any key to start");
     startGameText.setFont(contentManager.getFont());
     startGameText.setCharacterSize(30);
     startGameText.setOutlineColor(sf::Color::White);
-    startGameText.setPosition(150, 500);
+    startGameText.setPosition(190, 500);
 
     if (!titleMusic.openFromFile("Assets\\Sounds\\menuMusic.ogg"))
     {

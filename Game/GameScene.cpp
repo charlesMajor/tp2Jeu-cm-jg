@@ -150,7 +150,7 @@ bool GameScene::init()
   for (int i = 0; i < GameScene::AMOUNT_FRONT_ENEMIES; i++)
   {
       FrontLineEnemy& enemy = getAvailableFrontLineEnemy();
-      enemy.setPosition(i*100 + 75, 455);
+      enemy.setPosition(i*110 + 75, 455);
       enemy.activate();
   }
 
@@ -159,11 +159,11 @@ bool GameScene::init()
       AttackEnemy& enemy = getAvailableAttackEnemy();
       if (i <= 4)
       {
-          enemy.setPosition(i * 110 + 100, 225);
+          enemy.setPosition(i * 115 + 115, 225);
       }
       else
       {
-          enemy.setPosition(i * 110 - 450, 325);
+          enemy.setPosition(i * 115 - 460, 325);
       }
       enemy.activate();
   }
@@ -171,7 +171,7 @@ bool GameScene::init()
   for (int i = 0; i < GameScene::AMOUNT_BACK_ENEMIES; i++)
   {
       BackLineEnemy& enemy = getAvailableBackLineEnemy();
-      enemy.setPosition(i * 100 + 70, 125);
+      enemy.setPosition(i * 110 + 80, 125);
       enemy.activate();
   }
 
