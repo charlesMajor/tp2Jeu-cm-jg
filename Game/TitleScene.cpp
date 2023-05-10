@@ -42,6 +42,8 @@ void TitleScene::draw(sf::RenderWindow& window) const
     window.draw(background);
     window.draw(logo);
     window.draw(startGameText);
+    window.draw(startGameCheatText);
+    window.draw(escapeText);
 }
 
 bool TitleScene::uninit()
@@ -59,13 +61,26 @@ bool TitleScene::init()
     background.setTexture(contentManager.getBackground());
 
     logo.setTexture(contentManager.getLogo());
-    logo.setPosition(165, 150);
+
+    logo.setPosition(Game::WORLD_WIDTH / 2 - logo.getLocalBounds().width / 2, 150);
 
     startGameText.setString("Press any key to start");
     startGameText.setFont(contentManager.getFont());
     startGameText.setCharacterSize(30);
     startGameText.setOutlineColor(sf::Color::White);
-    startGameText.setPosition(190, 500);
+    startGameText.setPosition(Game::WORLD_WIDTH / 2 - startGameText.getLocalBounds().width / 2, 500);
+
+    startGameCheatText.setString("Click with the mouse to start with invincibility");
+    startGameCheatText.setFont(contentManager.getFont());
+    startGameCheatText.setCharacterSize(25);
+    startGameCheatText.setOutlineColor(sf::Color::White);
+    startGameCheatText.setPosition(Game::WORLD_WIDTH / 2 - startGameCheatText.getLocalBounds().width / 2, 550);
+
+    escapeText.setString("Press Escape to quit");
+    escapeText.setFont(contentManager.getFont());
+    escapeText.setCharacterSize(30);
+    escapeText.setOutlineColor(sf::Color::White);
+    escapeText.setPosition(Game::WORLD_WIDTH / 2 - escapeText.getLocalBounds().width / 2, Game::WORLD_HEIGHT - 100);
 
     if (!titleMusic.openFromFile("Assets\\Sounds\\menuMusic.ogg"))
     {
@@ -81,28 +96,25 @@ bool TitleScene::handleEvents(sf::RenderWindow& window)
 {
     bool retval = false;
     sf::Event event;
+
     while (window.pollEvent(event))
     {
         //x sur la fenêtre
-        if (event.type == sf::Event::Closed)
+        if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape))
         {
             window.close();
             retval = true;
         }
         if (event.type == sf::Event::MouseButtonPressed)
         {
-            if (event.mouseButton.button == sf::Mouse::Left || event.mouseButton.button == sf::Mouse::Right)
-            {
-                this->result.titleSceneResult.isInvincible = true;
-                this->shouldStartGame = true;
-            }            
+            this->result.titleSceneResult.isInvincible = true;
+            this->shouldStartGame = true;
         }
-        if (event.type == sf::Event::KeyPressed)
+        if (event.type == sf::Event::KeyPressed || event.type == sf::Event::JoystickButtonPressed)
         {
             this->result.titleSceneResult.isInvincible = false;
             this->shouldStartGame = true;
         }
     }
-
     return retval;
 }

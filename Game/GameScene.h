@@ -23,10 +23,15 @@ public:
 
   static const int AMOUNT_FRONT_ENEMIES;
   static const int AMOUNT_FRONT_ENEMIES_POOL;
+  static const int FRONT_ENEMIES_Y_POSITION;
+
   static const int AMOUNT_ATTACK_ENEMIES;
   static const int AMOUNT_ATTACK_ENEMIES_POOL;
+  static const int ATTACK_ENEMIES_Y_POSITION;
+
   static const int AMOUNT_BACK_ENEMIES;
   static const int AMOUNT_BACK_ENEMIES_POOL;
+  static const int BACK_ENEMIES_Y_POSITION;
 
   GameScene();
   ~GameScene();

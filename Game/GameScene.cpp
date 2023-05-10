@@ -6,7 +6,7 @@
 
 const float GameScene::TIME_PER_FRAME = 1.0f / (float)Game::FRAME_RATE;
 const float GameScene::KEYBOARD_SPEED = 5.0f;
-const float GameScene::GAMEPAD_SPEEDRATIO = 50.0f;
+const float GameScene::GAMEPAD_SPEEDRATIO = 20.0f;
 const int GameScene::CONTROLLER_DEAD_ZONE = 20;
 
 const int GameScene::MAX_RECOIL = 20;
@@ -14,10 +14,15 @@ const int GameScene::NB_BULLETS = 10;
 
 const int GameScene::AMOUNT_FRONT_ENEMIES = 6;
 const int GameScene::AMOUNT_FRONT_ENEMIES_POOL = GameScene::AMOUNT_FRONT_ENEMIES + 2;
+const int GameScene::FRONT_ENEMIES_Y_POSITION = 455;
+
 const int GameScene::AMOUNT_ATTACK_ENEMIES = 10;
 const int GameScene::AMOUNT_ATTACK_ENEMIES_POOL = GameScene::AMOUNT_ATTACK_ENEMIES + 2;
+const int GameScene::ATTACK_ENEMIES_Y_POSITION = 225;
+
 const int GameScene::AMOUNT_BACK_ENEMIES = 6;
 const int GameScene::AMOUNT_BACK_ENEMIES_POOL = GameScene::AMOUNT_BACK_ENEMIES + 2;
+const int GameScene::BACK_ENEMIES_Y_POSITION = 125;
 
 GameScene::GameScene()
   : Scene(SceneType::GAME_SCENE)
@@ -81,7 +86,7 @@ SceneType GameScene::update()
 
     player.update(TIME_PER_FRAME, inputs);
 
-    hud.setText(score, player.getLifeLeft());
+    hud.setText(score, player.getLifeLeft(), remainingTimeInGame);
   }
   else {
       if (wentToEndScene) {
@@ -165,20 +170,21 @@ bool GameScene::init()
   for (int i = 0; i < GameScene::AMOUNT_FRONT_ENEMIES; i++)
   {
       FrontLineEnemy& enemy = getAvailableFrontLineEnemy();
-      enemy.setPosition(i*110 + 75, 455);
+
+      enemy.setPosition(i*100 + 75, FRONT_ENEMIES_Y_POSITION);
       enemy.activate();
   }
 
   for (int i = 0; i < GameScene::AMOUNT_ATTACK_ENEMIES; i++)
   {
       AttackEnemy& enemy = getAvailableAttackEnemy();
-      if (i <= 4)
+      if (i < (AMOUNT_ATTACK_ENEMIES / 2))
       {
-          enemy.setPosition(i * 115 + 115, 225);
+          enemy.setPosition(i * 110 + 100, ATTACK_ENEMIES_Y_POSITION);
       }
       else
       {
-          enemy.setPosition(i * 115 - 460, 325);
+          enemy.setPosition(i * 110 - 450, ATTACK_ENEMIES_Y_POSITION + 100);
       }
       enemy.activate();
   }
@@ -186,7 +192,8 @@ bool GameScene::init()
   for (int i = 0; i < GameScene::AMOUNT_BACK_ENEMIES; i++)
   {
       BackLineEnemy& enemy = getAvailableBackLineEnemy();
-      enemy.setPosition(i * 110 + 80, 125);
+
+      enemy.setPosition(i * 100 + 70, BACK_ENEMIES_Y_POSITION);
       enemy.activate();
   }
 
@@ -223,7 +230,7 @@ bool GameScene::handleEvents(sf::RenderWindow& window)
     if (sf::Joystick::isConnected(0))
     {
         //TODO: Vérifier
-        //inputs.moveFactor = -handleControllerDeadZone(sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::X)) / GAMEPAD_SPEEDRATIO;
+        inputs.moveFactor = handleControllerDeadZone(sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::X)) / GAMEPAD_SPEEDRATIO;
         inputs.fireBullet = sf::Joystick::isButtonPressed(0, 0) && (recoil == 0);
     }
     else {

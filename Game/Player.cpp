@@ -6,11 +6,12 @@
 #include "Inputs.h"
 
 const int Player::MAX_LIFE = 5;
+const float Player::OPACITY_GAIN = 2.0f;
 
 Player::Player()
   : AnimatedGameObject()
   , life(MAX_LIFE)
-  , isDead(false)
+  , isHit(false)
 {
   activate();
 }
@@ -29,6 +30,17 @@ bool Player::init(const ContentManager& contentManager)
 
 bool Player::update(float deltaT, const Inputs& inputs)
 {
+    if (isHit)
+    {
+        int opacity = getColor().a;
+
+        if (opacity < 255 - OPACITY_GAIN) {
+            setColor(sf::Color(255, 255, 255, opacity + OPACITY_GAIN));
+        } else {
+            isHit = false;
+        }
+    }
+
     move(sf::Vector2f(inputs.moveFactor, 0));
     handleOutOfBoundsPosition();
 
@@ -56,9 +68,13 @@ const int Player::getLifeLeft()
 
 const void Player::onHit()
 {
+    isHit = true;
     life--;
+
     if (life <= 0)
         death();
+
+    setColor(sf::Color(255, 255, 255, 0));
 }
 
 const void Player::death()
