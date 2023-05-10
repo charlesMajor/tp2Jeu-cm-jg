@@ -9,5 +9,9 @@ public:
 	AttackEnemy(const AttackEnemy& src);
 	bool initialize(const GameContentManager& contentManager, const sf::Vector2f& initialPosition) override;
 	bool update(float elapsedTime) override;
+	void onHit() override;
+	void onDeath() override;
+private:
+	int health;
 };
 

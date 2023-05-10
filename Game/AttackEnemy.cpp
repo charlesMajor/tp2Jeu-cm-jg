@@ -3,7 +3,7 @@
 #include "AttackEnemy.h"
 #include "game.h"
 
-static const int BASE_HEALTH = 10;
+const int AttackEnemy::BASE_HEALTH = 10;
 
 AttackEnemy::AttackEnemy()
     : Enemy()
@@ -18,10 +18,25 @@ AttackEnemy::AttackEnemy(const AttackEnemy& src)
 bool AttackEnemy::initialize(const GameContentManager& contentManager, const sf::Vector2f& initialPosition)
 {
     GameObject::initialize(contentManager.getAttackEnemyTexture(), initialPosition);
+    health = BASE_HEALTH;
     return true;
 }
 
 bool AttackEnemy::update(float elapsedTime)
 {
     return true;
+}
+
+void AttackEnemy::onHit()
+{
+    health--;
+    if (health <= 0)
+    {
+        this->onDeath();
+    }
+}
+
+void AttackEnemy::onDeath()
+{
+    this->deactivate();
 }

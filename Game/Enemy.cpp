@@ -34,3 +34,8 @@ bool Enemy::update(float elapsedTime)
 {
     return true;
 }
+
+void Enemy::onHit()
+{
+
+}
