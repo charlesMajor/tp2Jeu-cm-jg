@@ -67,17 +67,41 @@ SceneType GameScene::update()
         if (bullet.isActive())
         {
             bullet.update(TIME_PER_FRAME);
-            /*for (Enemy& enemy : enemies)
+            for (Enemy& enemy : frontLineEnemyPool)
             {
                 if (bullet.collidesWith(enemy))
                 {
-                    enemy.deactivate();
                     bullet.deactivate();
-                    this->createNewBonus(enemy);
+                    enemy.onHit();
+                    /*this->createNewBonus(enemy);
                     this->addScore(ENEMY_KILL_SCORE);
-                    hud.drawEnemyScore(window, window.mapPixelToCoords(sf::Vector2i(enemy.getPosition())));
+                    hud.drawEnemyScore(window, window.mapPixelToCoords(sf::Vector2i(enemy.getPosition())));*/
                 }
-            }*/
+            }
+
+            for (Enemy& enemy : attackEnemyPool)
+            {
+                if (bullet.collidesWith(enemy))
+                {
+                    bullet.deactivate();
+                    enemy.onHit();
+                    /*this->createNewBonus(enemy);
+                    this->addScore(ENEMY_KILL_SCORE);
+                    hud.drawEnemyScore(window, window.mapPixelToCoords(sf::Vector2i(enemy.getPosition())));*/
+                }
+            }
+
+            for (Enemy& enemy : backLineEnemyPool)
+            {
+                if (bullet.collidesWith(enemy))
+                {
+                    bullet.deactivate();
+                    enemy.onHit();
+                    /*this->createNewBonus(enemy);
+                    this->addScore(ENEMY_KILL_SCORE);
+                    hud.drawEnemyScore(window, window.mapPixelToCoords(sf::Vector2i(enemy.getPosition())));*/
+                }
+            }
         }
     }
 
@@ -162,8 +186,6 @@ bool GameScene::init()
   backgroundSprite.setTexture(contentManager.getBackgroundTexture());
 
   player.init(contentManager);
- 
-  srand((unsigned)time(NULL)); //Utilitée ?
 
   initEnemiesPool();
 

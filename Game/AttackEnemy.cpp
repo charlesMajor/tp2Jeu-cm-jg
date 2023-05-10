@@ -3,7 +3,7 @@
 #include "AttackEnemy.h"
 #include "game.h"
 
-const int AttackEnemy::BASE_HEALTH = 10;
+const int AttackEnemy::BASE_HEALTH = 2;
 
 AttackEnemy::AttackEnemy()
     : Enemy()
@@ -13,6 +13,7 @@ AttackEnemy::AttackEnemy()
 AttackEnemy::AttackEnemy(const AttackEnemy& src)
     : Enemy(src)
 {
+    health = src.health;
 }
 
 bool AttackEnemy::initialize(const GameContentManager& contentManager, const sf::Vector2f& initialPosition)

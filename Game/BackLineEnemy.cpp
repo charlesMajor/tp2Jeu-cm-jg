@@ -2,7 +2,7 @@
 #include "BackLineEnemy.h"
 #include "game.h"
 
-const int BackLineEnemy::BASE_HEALTH = 10;
+const int BackLineEnemy::BASE_HEALTH = 2;
 
 BackLineEnemy::BackLineEnemy()
     : Enemy()
@@ -12,6 +12,7 @@ BackLineEnemy::BackLineEnemy()
 BackLineEnemy::BackLineEnemy(const BackLineEnemy& src)
     : Enemy(src)
 {
+    health = src.health;
 }
 
 bool BackLineEnemy::initialize(const GameContentManager& contentManager, const sf::Vector2f& initialPosition)

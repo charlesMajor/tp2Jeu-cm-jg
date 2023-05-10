@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "FrontLineEnemy.h"
 #include "game.h"
+#include <iostream>
 
 const int FrontLineEnemy::BASE_HEALTH = 4;
 
@@ -13,12 +14,13 @@ FrontLineEnemy::FrontLineEnemy()
 FrontLineEnemy::FrontLineEnemy(const FrontLineEnemy& src)
     : Enemy(src)
 {
+    health = src.health;
 }
 
 bool FrontLineEnemy::initialize(const GameContentManager& contentManager, const sf::Vector2f& initialPosition)
 {
     GameObject::initialize(contentManager.getFrontLineEnemyTexture(), initialPosition);
-    //health = BASE_HEALTH;
+    health = BASE_HEALTH;
     return true;
 }
 
