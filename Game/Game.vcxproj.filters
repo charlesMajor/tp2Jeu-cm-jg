@@ -138,9 +138,6 @@
     <ClInclude Include="Bullet.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="FrontLineEnemyAnimation.h">
-      <Filter>Fichiers d%27en-tête\Animations</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="game.cpp">
@@ -220,9 +217,6 @@
     </ClCompile>
     <ClCompile Include="Bullet.cpp">
       <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="FrontLineEnemyAnimation.cpp">
-      <Filter>Fichiers sources\Animations</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -171,7 +171,7 @@ bool GameScene::init()
   {
       FrontLineEnemy& enemy = getAvailableFrontLineEnemy();
 
-      enemy.setPosition(i*100 + 75, FRONT_ENEMIES_Y_POSITION);
+      enemy.setPosition(i*110 + 75, FRONT_ENEMIES_Y_POSITION);
       enemy.activate();
   }
 
@@ -180,11 +180,11 @@ bool GameScene::init()
       AttackEnemy& enemy = getAvailableAttackEnemy();
       if (i < (AMOUNT_ATTACK_ENEMIES / 2))
       {
-          enemy.setPosition(i * 110 + 100, ATTACK_ENEMIES_Y_POSITION);
+          enemy.setPosition(i * 115 + 125, ATTACK_ENEMIES_Y_POSITION);
       }
       else
       {
-          enemy.setPosition(i * 110 - 450, ATTACK_ENEMIES_Y_POSITION + 100);
+          enemy.setPosition(i * 115 - 450, ATTACK_ENEMIES_Y_POSITION + 100);
       }
       enemy.activate();
   }
@@ -193,7 +193,7 @@ bool GameScene::init()
   {
       BackLineEnemy& enemy = getAvailableBackLineEnemy();
 
-      enemy.setPosition(i * 100 + 70, BACK_ENEMIES_Y_POSITION);
+      enemy.setPosition(i * 110 + 80, BACK_ENEMIES_Y_POSITION);
       enemy.activate();
   }
 

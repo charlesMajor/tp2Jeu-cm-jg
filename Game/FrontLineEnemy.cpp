@@ -1,7 +1,6 @@
 /* Devient invincible pour quelques secondes lorsqu'il n'a presque plus de vie */
 #include "stdafx.h"
 #include "FrontLineEnemy.h"
-#include "FrontLineEnemyAnimation.h"
 #include "game.h"
 
 static const int BASE_HEALTH = 10;
