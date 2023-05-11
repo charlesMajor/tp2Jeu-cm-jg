@@ -24,14 +24,23 @@ bool BackLineEnemy::initialize(const GameContentManager& contentManager, const s
     return true;
 }
 
-bool BackLineEnemy::update(float elapsedTime, int currentPoints)
+bool BackLineEnemy::update(float elapsedTime, int currentPoints, bool playerSlowed)
 {
     Enemy::update(elapsedTime);
-    if (currentPoints % 100 == 0)
+    if (currentPoints % 100 == 0 && currentPoints != 0 && !playerSlowed)
     {
         return true;
     }
-    return true;
+
+    if (playerSlowed)
+    {
+        this->setColor(sf::Color::Blue);
+    }
+    else
+    {
+        this->setColor(sf::Color(255, 255, 255));
+    }
+    return false;
 }
 
 void BackLineEnemy::activate()

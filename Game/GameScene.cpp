@@ -10,7 +10,7 @@ const float GameScene::GAMEPAD_SPEEDRATIO = 20.0f;
 const int GameScene::CONTROLLER_DEAD_ZONE = 20;
 
 const int GameScene::MAX_RECOIL = 20;
-const int GameScene::NB_BULLETS = 10;
+const int GameScene::NB_BULLETS = 20;
 
 const int GameScene::AMOUNT_ENEMIES_POOL = GameScene::AMOUNT_FRONT_ENEMIES_POOL + GameScene::AMOUNT_ATTACK_ENEMIES_POOL + GameScene::AMOUNT_FRONT_ENEMIES_POOL;
 
@@ -67,16 +67,18 @@ SceneType GameScene::update()
           }
       }
 
+      int amountBackEnemies = 0;
       for (BackLineEnemy& enemy : backLineEnemyPool)
       {
           if (enemy.isActive())
           {
-              if (enemy.update(TIME_PER_FRAME, score))
+              if (enemy.update(TIME_PER_FRAME, score, player.isSlowed()))
               {
-                  //slow player
+                  amountBackEnemies++;
               }
           }
       }
+      player.slow(amountBackEnemies);
 
     for (Bullet& bullet : playerBullets)
     {
@@ -139,6 +141,16 @@ SceneType GameScene::update()
     player.update(TIME_PER_FRAME, inputs);
 
     hud.setText(score, player.getLifeLeft(), remainingTimeInGame);
+
+    if (remainingTimeInGame < 55 & remainingTimeInGame > 53)
+    {
+        score = 100;
+    }
+    else if (remainingTimeInGame < 53)
+    {
+        score = 101;
+    }
+
   }
   else {
       if (wentToEndScene) {
@@ -259,7 +271,7 @@ bool GameScene::init()
 
   hud.initialize(contentManager);
 
-  if (!gameMusic.openFromFile("Assets\\Music\\GameTheme.ogg"))
+  if (!gameMusic.openFromFile("Assets\\Sounds\\gameMusic.ogg"))
       return false;
   gameMusic.setLoop(true);
   gameMusic.play();
