@@ -3,11 +3,13 @@
 #include "game.h"
 #include <iostream>
 
-const int FrontLineEnemy::BASE_HEALTH = 4;
+const int FrontLineEnemy::BASE_HEALTH = 3;
 const int FrontLineEnemy::SHIELD_TIME = 2 * Game::FRAME_RATE;
 
 FrontLineEnemy::FrontLineEnemy()
     : Enemy()
+    , health(BASE_HEALTH)
+    , isShielded(false)
 {
     this->activate();
 }
@@ -17,12 +19,12 @@ FrontLineEnemy::FrontLineEnemy(const FrontLineEnemy& src)
 {
     health = src.health;
     timeLeftShield = src.timeLeftShield;
+    isShielded = src.isShielded;
 }
 
-bool FrontLineEnemy::initialize(const GameContentManager& contentManager, const sf::Vector2f& initialPosition)
+void FrontLineEnemy::initialize(const sf::Texture& texture, const sf::Vector2f& initialPosition)
 {
-    GameObject::initialize(contentManager.getFrontLineEnemyTexture(), initialPosition);
-    return true;
+    GameObject::initialize(texture, initialPosition);
 }
 
 bool FrontLineEnemy::update(float elapsedTime) 
@@ -48,9 +50,7 @@ void FrontLineEnemy::onHit()
     {
         health--;
         if (health <= 0)
-        {
             this->onDeath();
-        }
     }
     
     if (health == 1)
@@ -58,7 +58,6 @@ void FrontLineEnemy::onHit()
         this->isShielded = true;
         health = 0;
     }
-    
 }
 
 void FrontLineEnemy::shield()

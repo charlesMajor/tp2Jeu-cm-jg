@@ -2,10 +2,11 @@
 #include "BackLineEnemy.h"
 #include "game.h"
 
-const int BackLineEnemy::BASE_HEALTH = 3;
+const int BackLineEnemy::BASE_HEALTH = 1;
 
 BackLineEnemy::BackLineEnemy()
     : Enemy()
+    , health(BASE_HEALTH)
 {
     this->activate();
 }
@@ -16,11 +17,9 @@ BackLineEnemy::BackLineEnemy(const BackLineEnemy& src)
     health = src.health;
 }
 
-bool BackLineEnemy::initialize(const GameContentManager& contentManager, const sf::Vector2f& initialPosition)
+void BackLineEnemy::initialize(const sf::Texture& texture, const sf::Vector2f& initialPosition)
 {
-    GameObject::initialize(contentManager.getBackLineEnemyTexture(), initialPosition);
-    health = BASE_HEALTH;
-    return true;
+    GameObject::initialize(texture, initialPosition);
 }
 
 bool BackLineEnemy::update(float elapsedTime)

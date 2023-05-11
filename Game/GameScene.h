@@ -9,6 +9,10 @@
 #include "GameHud.h"
 #include "Inputs.h"
 #include "Bullet.h"
+#include "Bonus.h"
+#include "BulletPool.h"
+#include "EnemyPool.h"
+#include "BonusPool.h"
 
 class GameScene :
   public Scene
@@ -18,10 +22,13 @@ public:
   static const float KEYBOARD_SPEED;
   static const float GAMEPAD_SPEEDRATIO;
   static const int CONTROLLER_DEAD_ZONE;
+
   static const int MAX_RECOIL;
   static const int NB_BULLETS;
+  static const int NB_BONUS;
 
-  static const int AMOUNT_ENEMIES_POOL;
+  static const int PLAYER_BULLET_DIRECTION;
+  static const int ENEMY_BULLET_DIRECTION;
 
   static const int AMOUNT_FRONT_ENEMIES;
   static const int AMOUNT_FRONT_ENEMIES_POOL;
@@ -49,31 +56,30 @@ private:
   GameContentManager contentManager;
   GameHud hud;
 
-  float remainingTimeInGame;
-
   sf::Sprite backgroundSprite;
   sf::Music gameMusic;
 
-  std::list<FrontLineEnemy> frontLineEnemyPool;
-  std::list<AttackEnemy> attackEnemyPool;
-  std::list<BackLineEnemy> backLineEnemyPool;
+  EnemyPool<FrontLineEnemy> frontLineEnemyPool;
+  EnemyPool<AttackEnemy> attackEnemyPool;
+  EnemyPool<BackLineEnemy> backLineEnemyPool;
+
+  BulletPool<Bullet> playerBullets;
+  BulletPool<Bullet> enemyBullets;
+
+  BonusPool<Bonus> bonusPool;
+
+  Inputs inputs;
+  Player player;
+
+  void updateEnemies();
+  float handleControllerDeadZone(float analogInput);
+  void checkBulletCollisionWithEnemy(Bullet& bullet);
+  void onbulletCollidesWithEnemy(Bullet& bullet, Enemy& enemy);
+  void fireBullet(Bullet& bullet, GameObject from, int angle);
 
   int score;
-  Inputs inputs;
-  float handleControllerDeadZone(float analogInput);
-
-  Player player;
-  std::list<Bullet> playerBullets;
   int recoil = 0;
-  void createNewBullet();
-  void fireBullet(Bullet& bullet, GameObject from, int angle);
-  Bullet& getAvaiableBullet();
-  
-  void initEnemiesPool();
-  FrontLineEnemy& getAvailableFrontLineEnemy();
-  AttackEnemy& getAvailableAttackEnemy();
-  BackLineEnemy& getAvailableBackLineEnemy();
-  std::list<Bullet> enemyBullets;
-
-  bool wentToEndScene = false;
+  bool wentToEndScene;
+  float remainingTimeInGame;
+  bool isInvincible;
 };

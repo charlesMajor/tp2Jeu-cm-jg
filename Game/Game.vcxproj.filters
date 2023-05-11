@@ -43,6 +43,9 @@
     <Filter Include="Fichiers d%27en-tête\Animations">
       <UniqueIdentifier>{af040848-05c4-4543-9e98-e6928452c612}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers d%27en-tête\Pool">
+      <UniqueIdentifier>{9a847239-32ea-4cf7-87d1-f2d2c51363ea}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="targetver.h">
@@ -138,6 +141,21 @@
     <ClInclude Include="Bullet.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="Bonus.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Pool.h">
+      <Filter>Fichiers d%27en-tête\Pool</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletPool.h">
+      <Filter>Fichiers d%27en-tête\Pool</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyPool.h">
+      <Filter>Fichiers d%27en-tête\Pool</Filter>
+    </ClInclude>
+    <ClInclude Include="BonusPool.h">
+      <Filter>Fichiers d%27en-tête\Pool</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="game.cpp">
@@ -216,6 +234,9 @@
       <Filter>Fichiers sources\Animations</Filter>
     </ClCompile>
     <ClCompile Include="Bullet.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Bonus.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>

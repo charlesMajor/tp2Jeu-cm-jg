@@ -17,11 +17,20 @@ bool GameContentManager::loadContent()
 	
 	if (!backLineEnemyTexture.loadFromFile("Assets\\Sprites\\backLineEnemy.png"))
 		return false;
+
+	if (!enemyShotSoundBuffer.loadFromFile("Assets\\Sounds\\Shot02.ogg"))
+		return false;
 	
 	if (!backgroundTexture.loadFromFile("Assets\\Sprites\\SpaceBackground.png"))
 		return false;
 
 	if (!bulletTexture.loadFromFile("Assets\\Sprites\\Bullet.png"))
+		return false;
+
+	if (!bonusTexture.loadFromFile("Assets\\Sprites\\Bonus.png"))
+		return false;
+
+	if (!bonusSoundBuffer.loadFromFile("Assets\\Sounds\\GameBonus.ogg"))
 		return false;
 	
 	if (!font.loadFromFile("Assets\\Fonts\\segoepr.ttf"))
@@ -55,6 +64,11 @@ const sf::Texture& GameContentManager::getBackLineEnemyTexture() const
 	return backLineEnemyTexture;
 }
 
+const sf::SoundBuffer& GameContentManager::getEnemyShotSoundBuffer() const
+{
+	return enemyShotSoundBuffer;
+}
+
 const sf::Texture& GameContentManager::getBackgroundTexture() const
 {
 	return backgroundTexture;
@@ -63,6 +77,16 @@ const sf::Texture& GameContentManager::getBackgroundTexture() const
 const sf::Texture& GameContentManager::getBulletTexture() const
 {
 	return bulletTexture;
+}
+
+const sf::Texture& GameContentManager::getBonusTexture() const
+{
+	return bonusTexture;
+}
+
+const sf::SoundBuffer& GameContentManager::getBonusSoundBuffer() const
+{
+	return bonusSoundBuffer;
 }
 
 const sf::Font& GameContentManager::getFont() const

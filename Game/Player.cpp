@@ -6,7 +6,7 @@
 #include "Inputs.h"
 
 const int Player::MAX_LIFE = 5;
-const float Player::OPACITY_GAIN = 2.0f;
+const int Player::OPACITY_GAIN = 2;
 
 Player::Player()
   : AnimatedGameObject()
@@ -68,18 +68,14 @@ const int Player::getLifeLeft()
 
 const void Player::onHit()
 {
-    
-    if (!isHit)
-    {
+    life--;
+
+    if (life <= 0) {
+        death();
+    } else {
         isHit = true;
-        life--;
         setColor(sf::Color(255, 255, 255, 0));
     }
-
-    if (life <= 0)
-        death();
-
-    
 }
 
 const void Player::death()

@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Enemy.h"
 #include "game.h"
+#include "Publisher.h"
 #include <iostream>
 
 const float Enemy::MOVE_SPEED = 75.0f;
@@ -14,8 +15,8 @@ Enemy::Enemy(const Enemy& src)
     : GameObject(src)
 {
     setTexture(*src.getTexture());
-
     setPosition(src.getPosition());
+
     if (src.isActive())
         this->activate(src.leftFirst, src.distance);
     else
@@ -75,7 +76,7 @@ void Enemy::activate(bool leftFirst, int distance)
         sideLimits.push_back(left);
     }
     currentDirection = sideLimits.front();
-    this->active = true;
+   GameObject::activate();
 }
 
 void Enemy::onDeath()

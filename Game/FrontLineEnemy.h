@@ -8,14 +8,13 @@ class FrontLineEnemy : public Enemy
 public:
 	FrontLineEnemy();
 	FrontLineEnemy(const FrontLineEnemy& src);
-	bool initialize(const GameContentManager& contentManager, const sf::Vector2f& initialPosition) override;
+	void initialize(const sf::Texture & texture, const sf::Vector2f& initialPosition) override;
 	void activate() override;
 	bool update(float elapsedTime) override;
 	void onHit() override;
 	void shield();
 private:
 	int health;
-	bool isShielded = false;
+	bool isShielded;
 	float timeLeftShield;
 };
-

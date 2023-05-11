@@ -46,11 +46,9 @@ bool Bullet::update(float elapsedTime)
 	return false;
 }
 
-void Bullet::initialize(const sf::Texture& texture, const sf::Vector2f& initialPosition, const sf::SoundBuffer& sb)
+void Bullet::initialize(const sf::Texture& texture, const sf::Vector2f& initialPosition)
 {
 	GameObject::initialize(texture, initialPosition);
-
-	bulletSound.setBuffer(sb);
 }
 
 void Bullet::activate()
@@ -58,4 +56,9 @@ void Bullet::activate()
 
 	bulletSound.play();
 	GameObject::activate();
+}
+
+void Bullet::setShotBuffer(const sf::SoundBuffer& sb)
+{
+	bulletSound.setBuffer(sb);
 }

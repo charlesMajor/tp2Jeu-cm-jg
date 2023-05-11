@@ -6,7 +6,7 @@ class Player : public AnimatedGameObject
 {
 public:
 	static const int MAX_LIFE;
-	static const float OPACITY_GAIN;
+	static const int OPACITY_GAIN;
 
 	Player();
 	virtual bool init(const ContentManager& contentManager) override;

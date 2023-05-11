@@ -7,11 +7,10 @@ class BackLineEnemy : public Enemy
 public:
 	BackLineEnemy();
 	BackLineEnemy(const BackLineEnemy& src);
-	bool initialize(const GameContentManager& contentManager, const sf::Vector2f& initialPosition) override;
+	void initialize(const sf::Texture & texture, const sf::Vector2f & initialPosition) override;
 	bool update(float elapsedTime) override;
 	void activate() override;
 	void onHit() override;
 private:
 	int health;
 };
-
