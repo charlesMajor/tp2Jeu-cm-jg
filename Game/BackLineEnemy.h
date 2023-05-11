@@ -4,6 +4,7 @@
 class BackLineEnemy : public Enemy
 {
 	static const int BASE_HEALTH;
+	static const int AMOUNT_POINTS_FOR_SLOW;
 public:
 	BackLineEnemy();
 	BackLineEnemy(const BackLineEnemy& src);

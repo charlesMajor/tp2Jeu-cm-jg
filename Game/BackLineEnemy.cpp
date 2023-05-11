@@ -4,6 +4,7 @@
 #include <iostream>
 
 const int BackLineEnemy::BASE_HEALTH = 3;
+const int BackLineEnemy::AMOUNT_POINTS_FOR_SLOW = 1000;
 
 BackLineEnemy::BackLineEnemy()
     : Enemy()
@@ -27,7 +28,7 @@ bool BackLineEnemy::initialize(const GameContentManager& contentManager, const s
 bool BackLineEnemy::update(float elapsedTime, int currentPoints, bool playerSlowed)
 {
     Enemy::update(elapsedTime);
-    if (currentPoints % 100 == 0 && currentPoints != 0 && !playerSlowed)
+    if (currentPoints % AMOUNT_POINTS_FOR_SLOW == 0 && currentPoints != 0 && !playerSlowed)
     {
         return true;
     }

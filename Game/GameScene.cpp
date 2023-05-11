@@ -141,16 +141,6 @@ SceneType GameScene::update()
     player.update(TIME_PER_FRAME, inputs);
 
     hud.setText(score, player.getLifeLeft(), remainingTimeInGame);
-
-    if (remainingTimeInGame < 55 & remainingTimeInGame > 53)
-    {
-        score = 100;
-    }
-    else if (remainingTimeInGame < 53)
-    {
-        score = 101;
-    }
-
   }
   else {
       if (wentToEndScene) {
