@@ -1,9 +1,10 @@
-/* Augment la cadence de tir des alliés pour quelques secondes à la mort */
 #include "stdafx.h"
 #include "AttackEnemy.h"
 #include "game.h"
+#include "GameScene.h"
 
-const int AttackEnemy::BASE_HEALTH = 2;
+const int AttackEnemy::BASE_HEALTH = 3;
+const int AttackEnemy::MAX_RECOIL = 20;
 
 AttackEnemy::AttackEnemy()
     : Enemy()
@@ -23,9 +24,29 @@ bool AttackEnemy::initialize(const GameContentManager& contentManager, const sf:
     return true;
 }
 
-bool AttackEnemy::update(float elapsedTime)
+bool AttackEnemy::update(float elapsedTime, sf::Vector2f playerPosition)
 {
-    return true;
+    recoil = std::max(0, recoil - 1);
+    Enemy::update(elapsedTime);
+    if ((getPosition().x - playerPosition.x) * (getPosition().x - playerPosition.x) < 2 && recoil == 0)
+    {
+        recoil = MAX_RECOIL;
+        return true;
+    }
+    return false;
+}
+
+void AttackEnemy::activate()
+{
+    health = BASE_HEALTH;
+    if (getPosition().y == GameScene::ATTACK_ENEMIES_Y_POSITION)
+    {
+        Enemy::activate(true, 70);
+    }
+    else
+    {
+        Enemy::activate(false, 70);
+    }   
 }
 
 void AttackEnemy::onHit()
@@ -37,7 +58,7 @@ void AttackEnemy::onHit()
     }
 }
 
-void AttackEnemy::onDeath()
+int AttackEnemy::getAngleForBullet()
 {
-    this->deactivate();
+    return bulletAngle;
 }

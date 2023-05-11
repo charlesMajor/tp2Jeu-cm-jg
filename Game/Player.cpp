@@ -68,13 +68,18 @@ const int Player::getLifeLeft()
 
 const void Player::onHit()
 {
-    isHit = true;
-    life--;
+    
+    if (!isHit)
+    {
+        isHit = true;
+        life--;
+        setColor(sf::Color(255, 255, 255, 0));
+    }
 
     if (life <= 0)
         death();
 
-    setColor(sf::Color(255, 255, 255, 0));
+    
 }
 
 const void Player::death()

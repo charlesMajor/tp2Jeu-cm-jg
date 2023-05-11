@@ -13,6 +13,7 @@ public:
 	void initialize(const sf::Texture& texture, const sf::Vector2f& initialPosition, const sf::SoundBuffer& sb);
 	virtual void activate() override;
 
+	bool fromPlayer;
 private:
 	sf::Sound bulletSound;
 };

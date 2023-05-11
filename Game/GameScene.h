@@ -21,6 +21,8 @@ public:
   static const int MAX_RECOIL;
   static const int NB_BULLETS;
 
+  static const int AMOUNT_ENEMIES_POOL;
+
   static const int AMOUNT_FRONT_ENEMIES;
   static const int AMOUNT_FRONT_ENEMIES_POOL;
   static const int FRONT_ENEMIES_Y_POSITION;
@@ -64,7 +66,7 @@ private:
   std::list<Bullet> playerBullets;
   int recoil = 0;
   void createNewBullet();
-  void fireBullet(Bullet& bullet);
+  void fireBullet(Bullet& bullet, GameObject from, int angle);
   Bullet& getAvaiableBullet();
   
   void initEnemiesPool();

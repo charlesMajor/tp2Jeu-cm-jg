@@ -12,6 +12,8 @@ const int GameScene::CONTROLLER_DEAD_ZONE = 20;
 const int GameScene::MAX_RECOIL = 20;
 const int GameScene::NB_BULLETS = 10;
 
+const int GameScene::AMOUNT_ENEMIES_POOL = GameScene::AMOUNT_FRONT_ENEMIES_POOL + GameScene::AMOUNT_ATTACK_ENEMIES_POOL + GameScene::AMOUNT_FRONT_ENEMIES_POOL;
+
 const int GameScene::AMOUNT_FRONT_ENEMIES = 6;
 const int GameScene::AMOUNT_FRONT_ENEMIES_POOL = GameScene::AMOUNT_FRONT_ENEMIES + 2;
 const int GameScene::FRONT_ENEMIES_Y_POSITION = 455;
@@ -48,65 +50,88 @@ SceneType GameScene::update()
   {
       for (FrontLineEnemy& enemy : frontLineEnemyPool)
       {
-          enemy.update(TIME_PER_FRAME);
+          if (enemy.isActive())
+          {
+              enemy.update(TIME_PER_FRAME);
+          }   
       }
 
       for (AttackEnemy& enemy : attackEnemyPool)
       {
-          enemy.update(TIME_PER_FRAME);
+          if (enemy.isActive())
+          {
+              if (enemy.update(TIME_PER_FRAME, player.getPosition()))
+              {
+                  this->fireBullet(this->getAvaiableBullet(), enemy, 90);
+              }
+          }
       }
 
       for (BackLineEnemy& enemy : backLineEnemyPool)
       {
-          enemy.update(TIME_PER_FRAME);
+          if (enemy.isActive())
+          {
+              enemy.update(TIME_PER_FRAME);
+          }
       }
 
-    recoil = std::max(0, recoil - 1);
     for (Bullet& bullet : playerBullets)
     {
         if (bullet.isActive())
         {
             bullet.update(TIME_PER_FRAME);
-            for (Enemy& enemy : frontLineEnemyPool)
+            if (bullet.fromPlayer)
             {
-                if (bullet.collidesWith(enemy))
+                for (Enemy& enemy : frontLineEnemyPool)
                 {
-                    bullet.deactivate();
-                    enemy.onHit();
-                    /*this->createNewBonus(enemy);
-                    this->addScore(ENEMY_KILL_SCORE);
-                    hud.drawEnemyScore(window, window.mapPixelToCoords(sf::Vector2i(enemy.getPosition())));*/
+                    if (bullet.collidesWith(enemy))
+                    {
+                        bullet.deactivate();
+                        enemy.onHit();
+                        /*this->createNewBonus(enemy);
+                        this->addScore(ENEMY_KILL_SCORE);
+                        hud.drawEnemyScore(window, window.mapPixelToCoords(sf::Vector2i(enemy.getPosition())));*/
+                    }
+                }
+
+                for (Enemy& enemy : attackEnemyPool)
+                {
+                    if (bullet.collidesWith(enemy))
+                    {
+                        bullet.deactivate();
+                        enemy.onHit();
+                        /*this->createNewBonus(enemy);
+                        this->addScore(ENEMY_KILL_SCORE);
+                        hud.drawEnemyScore(window, window.mapPixelToCoords(sf::Vector2i(enemy.getPosition())));*/
+                    }
+                }
+
+                for (Enemy& enemy : backLineEnemyPool)
+                {
+                    if (bullet.collidesWith(enemy))
+                    {
+                        bullet.deactivate();
+                        enemy.onHit();
+                        /*this->createNewBonus(enemy);
+                        this->addScore(ENEMY_KILL_SCORE);
+                        hud.drawEnemyScore(window, window.mapPixelToCoords(sf::Vector2i(enemy.getPosition())));*/
+                    }
                 }
             }
-
-            for (Enemy& enemy : attackEnemyPool)
+            else
             {
-                if (bullet.collidesWith(enemy))
+                if (bullet.collidesWith(player))
                 {
                     bullet.deactivate();
-                    enemy.onHit();
-                    /*this->createNewBonus(enemy);
-                    this->addScore(ENEMY_KILL_SCORE);
-                    hud.drawEnemyScore(window, window.mapPixelToCoords(sf::Vector2i(enemy.getPosition())));*/
-                }
-            }
-
-            for (Enemy& enemy : backLineEnemyPool)
-            {
-                if (bullet.collidesWith(enemy))
-                {
-                    bullet.deactivate();
-                    enemy.onHit();
-                    /*this->createNewBonus(enemy);
-                    this->addScore(ENEMY_KILL_SCORE);
-                    hud.drawEnemyScore(window, window.mapPixelToCoords(sf::Vector2i(enemy.getPosition())));*/
+                    player.onHit();
                 }
             }
         }
     }
 
-    if (inputs.fireBullet)
-        this->fireBullet(this->getAvaiableBullet());
+    recoil = std::max(0, recoil - 1);
+    if (inputs.fireBullet && recoil == 0)
+        this->fireBullet(this->getAvaiableBullet(), player, -90);
 
     player.update(TIME_PER_FRAME, inputs);
 
@@ -139,6 +164,8 @@ void GameScene::unPause()
 void GameScene::draw(sf::RenderWindow& window) const
 {
   window.draw(backgroundSprite);
+  /*for (const Enemy& current : enemyPool)
+  if (<FrontLineEnemy>()*/
 
   for (const FrontLineEnemy& current : frontLineEnemyPool)
   {
@@ -271,6 +298,7 @@ void GameScene::initEnemiesPool()
     {
         FrontLineEnemy current;
         current.initialize(contentManager, sf::Vector2f(0, 0));
+        current.deactivate();
         this->frontLineEnemyPool.push_back(current);
     }
 
@@ -278,6 +306,7 @@ void GameScene::initEnemiesPool()
     {
         AttackEnemy current;
         current.initialize(contentManager, sf::Vector2f(0, 0));
+        current.deactivate();
         this->attackEnemyPool.push_back(current);
     }
 
@@ -285,6 +314,7 @@ void GameScene::initEnemiesPool()
     {
         BackLineEnemy current;
         current.initialize(contentManager, sf::Vector2f(0, 0));
+        current.deactivate();
         this->backLineEnemyPool.push_back(current);
     }
 }
@@ -297,8 +327,9 @@ FrontLineEnemy& GameScene::getAvailableFrontLineEnemy()
             return enemy;
     }
 
-    FrontLineEnemy newEnemy = FrontLineEnemy();
+    FrontLineEnemy newEnemy;
     newEnemy.initialize(contentManager, sf::Vector2f(0, 0));
+    newEnemy.deactivate();
     frontLineEnemyPool.push_back(newEnemy);
     return frontLineEnemyPool.back();
 }
@@ -311,8 +342,9 @@ AttackEnemy& GameScene::getAvailableAttackEnemy()
             return enemy;
     }
 
-    AttackEnemy newEnemy = AttackEnemy();
+    AttackEnemy newEnemy;
     newEnemy.initialize(contentManager, sf::Vector2f(0, 0));
+    newEnemy.deactivate();
     attackEnemyPool.push_back(newEnemy);
     return attackEnemyPool.back();
 
@@ -327,8 +359,9 @@ BackLineEnemy& GameScene::getAvailableBackLineEnemy()
             return enemy;
     }
 
-    BackLineEnemy newEnemy = BackLineEnemy();
+    BackLineEnemy newEnemy;
     newEnemy.initialize(contentManager, sf::Vector2f(0, 0));
+    newEnemy.deactivate();
     backLineEnemyPool.push_back(newEnemy);
     return backLineEnemyPool.back();
 }
@@ -360,11 +393,22 @@ void GameScene::createNewBullet()
     playerBullets.push_back(bullet);
 }
 
-void GameScene::fireBullet(Bullet& bullet)
+void GameScene::fireBullet(Bullet& bullet, GameObject from, int angle)
 {
-    bullet.setPosition(player.getPosition());
-    bullet.setRotation(-90);
+    bullet.setPosition(from.getPosition());
+    if (from.getPosition().y >= FRONT_ENEMIES_Y_POSITION)
+    {
+        bullet.setRotation(angle);
+        bullet.setColor(sf::Color::White);
+        bullet.fromPlayer = true;
+        inputs.fireBullet = false;
+        recoil = MAX_RECOIL;
+    }
+    else
+    {
+        bullet.setRotation(angle);
+        bullet.setColor(sf::Color::Red);
+        bullet.fromPlayer = false;
+    }
     bullet.activate();
-    inputs.fireBullet = false;
-    recoil = MAX_RECOIL;
 }

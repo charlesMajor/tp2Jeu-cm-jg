@@ -3,7 +3,7 @@
 #include "ContentManager.h"
 #include "game.h"
 
-const float Bullet::BULLET_SPEED = 600;
+const float Bullet::BULLET_SPEED = 550;
 
 Bullet::Bullet(const sf::Vector2f& initialPosition, const sf::Vector2f& initialThrust)
 	: GameObject()
@@ -55,6 +55,7 @@ void Bullet::initialize(const sf::Texture& texture, const sf::Vector2f& initialP
 
 void Bullet::activate()
 {
+
 	bulletSound.play();
 	GameObject::activate();
 }

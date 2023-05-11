@@ -11,13 +11,12 @@ public:
 	Player();
 	virtual bool init(const ContentManager& contentManager) override;
 	bool update(float deltaT, const Inputs& inputs) override;
-
+	const void onHit();
 	const int getLifeLeft();
 
 private:
 	void handleOutOfBoundsPosition();
 	const void death();
-	const void onHit();
 
 	int life;
 	bool isHit;
