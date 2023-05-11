@@ -71,7 +71,10 @@ SceneType GameScene::update()
       {
           if (enemy.isActive())
           {
-              enemy.update(TIME_PER_FRAME);
+              if (enemy.update(TIME_PER_FRAME, score))
+              {
+                  //slow player
+              }
           }
       }
 

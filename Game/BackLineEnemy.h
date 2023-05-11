@@ -8,7 +8,7 @@ public:
 	BackLineEnemy();
 	BackLineEnemy(const BackLineEnemy& src);
 	bool initialize(const GameContentManager& contentManager, const sf::Vector2f& initialPosition) override;
-	bool update(float elapsedTime) override;
+	bool update(float elapsedTime, int currentPoints);
 	void activate() override;
 	void onHit() override;
 private:

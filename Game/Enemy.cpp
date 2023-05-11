@@ -42,6 +42,14 @@ bool Enemy::update(float elapsedTime)
     {
         float moveDistance = elapsedTime * MOVE_SPEED;
         float moveAngle = atan2f((currentDirection.y - getPosition().y), (currentDirection.x - getPosition().x));
+        /*if (currentDirection.y < getPosition().y)
+        {
+            moveAngle = 0;
+        }
+        else
+        {
+            moveAngle = 3.14159;
+        }*/
         move(cos(moveAngle) * moveDistance, sin(moveAngle) * moveDistance);
     }
     else

@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "BackLineEnemy.h"
 #include "game.h"
+#include <iostream>
 
 const int BackLineEnemy::BASE_HEALTH = 3;
 
@@ -23,9 +24,13 @@ bool BackLineEnemy::initialize(const GameContentManager& contentManager, const s
     return true;
 }
 
-bool BackLineEnemy::update(float elapsedTime)
+bool BackLineEnemy::update(float elapsedTime, int currentPoints)
 {
     Enemy::update(elapsedTime);
+    if (currentPoints % 100 == 0)
+    {
+        return true;
+    }
     return true;
 }
 
