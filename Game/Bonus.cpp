@@ -40,7 +40,7 @@ void Bonus::initialize(const sf::Texture& texture, const sf::Vector2f& initialPo
 	GameObject::initialize(texture, initialPosition);
 }
 
-void Bonus::deactivate()
+void Bonus::collidesWithPlayer()
 {
 	GameObject::deactivate();
 	Publisher::notifySubscribers(Event::BONUS_ACQUIRED, nullptr);

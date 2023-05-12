@@ -12,5 +12,5 @@ public:
 	void initialize(const sf::Texture& texture, const sf::Vector2f& initialPosition);
 	void draw(sf::RenderWindow& window) const;
 	bool update(float elapsedTime);
-	virtual void deactivate() override;
+	void collidesWithPlayer();
 };

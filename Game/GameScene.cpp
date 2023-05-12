@@ -92,7 +92,7 @@ SceneType GameScene::update()
             bonus.update(TIME_PER_FRAME);
 
             if (bonus.collidesWith(player))
-                bonus.deactivate();
+                bonus.collidesWithPlayer();
         }
     }
 
