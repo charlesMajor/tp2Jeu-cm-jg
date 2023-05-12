@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -161,10 +161,16 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="AnimationFrame.h" />
     <ClInclude Include="AnimationState.h" />
+    <ClInclude Include="Bonus.h" />
+    <ClInclude Include="BonusPool.h" />
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="BulletPool.h" />
     <ClInclude Include="ContentManager.h" />
     <ClInclude Include="EndGameContentManager.h" />
     <ClInclude Include="EndGameScene.h" />
+    <ClInclude Include="EnemyDeathData.h" />
+    <ClInclude Include="EnemyPool.h" />
+    <ClInclude Include="event.h" />
     <ClInclude Include="FrontLineEnemy.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="GameContentManager.h" />
@@ -175,14 +181,16 @@
     <ClInclude Include="LinearAnimation.h" />
     <ClInclude Include="PlayerExplodingAnimation.h" />
     <ClInclude Include="PlayerIdleAnimation.h" />
-    <ClInclude Include="Pokeball.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Pool.h" />
+    <ClInclude Include="Publisher.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneResult.h" />
     <ClInclude Include="scenetype.h" />
     <ClInclude Include="Score.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="Subscriber.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="TitleContentManager.h" />
     <ClInclude Include="TitleScene.h" />
@@ -193,6 +201,7 @@
     <ClCompile Include="AnimatedGameObject.cpp" />
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="AnimationFrame.cpp" />
+    <ClCompile Include="Bonus.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="EndGameContentManager.cpp" />
     <ClCompile Include="EndGameScene.cpp" />
@@ -206,9 +215,9 @@
     <ClCompile Include="LinearAnimation.cpp" />
     <ClCompile Include="PlayerExplodingAnimation.cpp" />
     <ClCompile Include="PlayerIdleAnimation.cpp" />
-    <ClCompile Include="Pokeball.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Publisher.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

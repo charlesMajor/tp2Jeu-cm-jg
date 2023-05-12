@@ -5,10 +5,11 @@ class AttackEnemy : public Enemy
 {
 	static const int BASE_HEALTH;
 	static const int MAX_RECOIL;
+	static const int DESTRUCTION_SCORE;
 public:
 	AttackEnemy();
 	AttackEnemy(const AttackEnemy& src);
-	bool initialize(const GameContentManager& contentManager, const sf::Vector2f& initialPosition) override;
+	void initialize(const sf::Texture & texture, const sf::Vector2f & initialPosition) override;
 	bool update(float elapsedTime, sf::Vector2f playerPosition);
 	void activate() override;
 	void onHit() override;
@@ -18,4 +19,3 @@ private:
 	int health;
 	int recoil = 0;
 };
-

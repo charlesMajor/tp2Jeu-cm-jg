@@ -3,11 +3,13 @@
 #include "game.h"
 #include "GameScene.h"
 
-const int AttackEnemy::BASE_HEALTH = 3;
-const int AttackEnemy::MAX_RECOIL = 20;
+const int AttackEnemy::BASE_HEALTH = 2;
+const int AttackEnemy::MAX_RECOIL = 100;
+const int AttackEnemy::DESTRUCTION_SCORE = 100;
 
 AttackEnemy::AttackEnemy()
     : Enemy()
+    , health(BASE_HEALTH)
 {
 }
 
@@ -17,11 +19,9 @@ AttackEnemy::AttackEnemy(const AttackEnemy& src)
     health = src.health;
 }
 
-bool AttackEnemy::initialize(const GameContentManager& contentManager, const sf::Vector2f& initialPosition)
+void AttackEnemy::initialize(const sf::Texture& texture, const sf::Vector2f& initialPosition)
 {
-    GameObject::initialize(contentManager.getAttackEnemyTexture(), initialPosition);
-    health = BASE_HEALTH;
-    return true;
+    GameObject::initialize(texture, initialPosition);
 }
 
 bool AttackEnemy::update(float elapsedTime, sf::Vector2f playerPosition)
@@ -38,7 +38,6 @@ bool AttackEnemy::update(float elapsedTime, sf::Vector2f playerPosition)
 
 void AttackEnemy::activate()
 {
-    health = BASE_HEALTH;
     if (getPosition().y == GameScene::ATTACK_ENEMIES_Y_POSITION)
     {
         Enemy::activate(true, 70);
@@ -54,7 +53,7 @@ void AttackEnemy::onHit()
     health--;
     if (health <= 0)
     {
-        this->onDeath();
+        this->onDeath(DESTRUCTION_SCORE, *this);
     }
 }
 

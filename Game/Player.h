@@ -17,6 +17,7 @@ public:
 	const int getLifeLeft();
 	void slow(int amountBackEnemies);
 	const bool isSlowed();
+	void addOneLife();
 
 private:
 	void handleOutOfBoundsPosition();
@@ -26,4 +27,5 @@ private:
 	int life;
 	bool isHit;
 	int timeSlowed = 0;
+	int totalTimeExploding;
 };

@@ -43,6 +43,9 @@
     <Filter Include="Fichiers d%27en-tête\Animations">
       <UniqueIdentifier>{af040848-05c4-4543-9e98-e6928452c612}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers d%27en-tête\Pool">
+      <UniqueIdentifier>{9a847239-32ea-4cf7-87d1-f2d2c51363ea}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="targetver.h">
@@ -74,9 +77,6 @@
     </ClInclude>
     <ClInclude Include="scenetype.h">
       <Filter>Fichiers d%27en-tête\Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="Pokeball.h">
-      <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Fichiers d%27en-tête</Filter>
@@ -138,8 +138,32 @@
     <ClInclude Include="Bullet.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="Score.h">
+    <ClInclude Include="Bonus.h">
       <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Pool.h">
+      <Filter>Fichiers d%27en-tête\Pool</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletPool.h">
+      <Filter>Fichiers d%27en-tête\Pool</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyPool.h">
+      <Filter>Fichiers d%27en-tête\Pool</Filter>
+    </ClInclude>
+    <ClInclude Include="BonusPool.h">
+      <Filter>Fichiers d%27en-tête\Pool</Filter>
+    </ClInclude>
+    <ClInclude Include="event.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Publisher.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Subscriber.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyDeathData.h">
+      <Filter>Fichiers d%27en-tête\Enemies</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -160,9 +184,6 @@
     </ClCompile>
     <ClCompile Include="Scene.cpp">
       <Filter>Fichiers sources\Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="Pokeball.cpp">
-      <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Fichiers sources</Filter>
@@ -219,6 +240,12 @@
       <Filter>Fichiers sources\Animations</Filter>
     </ClCompile>
     <ClCompile Include="Bullet.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Bonus.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Publisher.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>

@@ -137,7 +137,7 @@ bool Game::uninit()
 
 Scene* Game::getNextScene(SceneType type) const
 {
-  Scene* scene =nullptr;
+  Scene* scene = nullptr;
   switch (type)
   {
       case SceneType::GAME_SCENE:

@@ -4,10 +4,11 @@
 #include "PlayerExplodingAnimation.h"
 #include "PlayerIdleAnimation.h"
 #include "Inputs.h"
+#include "Publisher.h"
 #include <iostream>
 
 const int Player::MAX_LIFE = 5;
-const float Player::OPACITY_GAIN = 2.0f;
+const float Player::OPACITY_GAIN = 3.0f;
 const float Player::BASE_SPEED = 1;
 const int Player::SLOW_TIME = 3 * Game::FRAME_RATE;
 
@@ -15,9 +16,10 @@ Player::Player()
   : AnimatedGameObject()
   , life(MAX_LIFE)
   , isHit(false)
+  , totalTimeExploding(0)
 {
     currentSpeed = BASE_SPEED;
-  activate();
+    activate();
 }
 
 bool Player::init(const ContentManager& contentManager)
@@ -66,6 +68,18 @@ bool Player::update(float deltaT, const Inputs& inputs)
         setColor(sf::Color(255, 255, 255));
     }
 
+    if (currentState == State::EXPLODING)
+    {
+        if (totalTimeExploding >= PlayerExplodingAnimation::ANIMATION_LENGTH * Game::FRAME_RATE)
+        {
+            deactivate();
+            Publisher::notifySubscribers(Event::PLAYER_DEATH, nullptr);
+        }
+        else {
+            totalTimeExploding++;
+        }
+    }
+
     move(sf::Vector2f(inputs.moveFactor * currentSpeed, 0));
     handleOutOfBoundsPosition();
 
@@ -93,30 +107,27 @@ const int Player::getLifeLeft()
 
 const void Player::onHit()
 {
-    
-    if (!isHit)
+    if (!isHit && life > 0)
     {
-        isHit = true;
         life--;
+        isHit = true;
+
         if (timeSlowed > 0)
-        {
             setColor(sf::Color(0, 0, 255, 0));
+
+        if (life <= 0) {
+            death();
         }
-        else
-        {
+        else {
             setColor(sf::Color(255, 255, 255, 0));
         }
     }
-
-    if (life <= 0)
-        death();
-
-    
 }
 
 const void Player::death()
 {
     currentState = State::EXPLODING;
+    totalTimeExploding = 0;
 }
 
 void Player::slow(int amountBackEnemies)
@@ -130,9 +141,10 @@ void Player::slow(int amountBackEnemies)
 
 const bool Player::isSlowed()
 {
-    if (timeSlowed > 0)
-    {
-        return true;
-    }
-    return false;
+    return (timeSlowed > 0);
+}
+
+void Player::addOneLife()
+{
+    life++;
 }

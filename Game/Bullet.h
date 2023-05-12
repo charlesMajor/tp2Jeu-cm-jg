@@ -10,10 +10,9 @@ public:
 	Bullet& operator=(const Bullet& rhs);
 	void draw(sf::RenderWindow& window) const;
 	bool update(float elapsedTime);
-	void initialize(const sf::Texture& texture, const sf::Vector2f& initialPosition, const sf::SoundBuffer& sb);
+	void initialize(const sf::Texture& texture, const sf::Vector2f& initialPosition);
 	virtual void activate() override;
-
-	bool fromPlayer;
+	void setShotBuffer(const sf::SoundBuffer& sb);
 private:
 	sf::Sound bulletSound;
 };

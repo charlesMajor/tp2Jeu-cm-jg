@@ -3,11 +3,13 @@
 #include "game.h"
 #include <iostream>
 
-const int BackLineEnemy::BASE_HEALTH = 3;
+const int BackLineEnemy::BASE_HEALTH = 2;
 const int BackLineEnemy::AMOUNT_POINTS_FOR_SLOW = 1000;
+const int BackLineEnemy::DESTRUCTION_SCORE = 200;
 
 BackLineEnemy::BackLineEnemy()
     : Enemy()
+    , health(BASE_HEALTH)
 {
     this->activate();
 }
@@ -18,11 +20,9 @@ BackLineEnemy::BackLineEnemy(const BackLineEnemy& src)
     health = src.health;
 }
 
-bool BackLineEnemy::initialize(const GameContentManager& contentManager, const sf::Vector2f& initialPosition)
+void BackLineEnemy::initialize(const sf::Texture& texture, const sf::Vector2f& initialPosition)
 {
-    GameObject::initialize(contentManager.getBackLineEnemyTexture(), initialPosition);
-    health = BASE_HEALTH;
-    return true;
+    GameObject::initialize(texture, initialPosition);
 }
 
 bool BackLineEnemy::update(float elapsedTime, int currentPoints, bool playerSlowed)
@@ -55,6 +55,6 @@ void BackLineEnemy::onHit()
     health--;
     if (health <= 0)
     {
-        this->onDeath();
+        this->onDeath(DESTRUCTION_SCORE, *this);
     }
 }

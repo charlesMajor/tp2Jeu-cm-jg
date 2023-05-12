@@ -12,7 +12,6 @@ GameHud::GameHud()
 
 void GameHud::initialize(const GameContentManager& contentManager)
 {
-	//const std::string introductionText = "Good luck!";
 	hudView = sf::View(sf::FloatRect(0, 0, (float)Game::GAME_WIDTH, (float)Game::GAME_HEIGHT));
 
 	scoreTxt.setFont(contentManager.getFont());

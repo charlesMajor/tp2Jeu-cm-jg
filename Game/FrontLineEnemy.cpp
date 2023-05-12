@@ -3,11 +3,15 @@
 #include "game.h"
 #include <iostream>
 
-const int FrontLineEnemy::BASE_HEALTH = 4;
-const int FrontLineEnemy::SHIELD_TIME = 2 * Game::FRAME_RATE;
+const int FrontLineEnemy::BASE_HEALTH = 2;
+const int FrontLineEnemy::SHIELD_TIME = 5 * Game::FRAME_RATE;
+const int FrontLineEnemy::DESTRUCTION_SCORE = 50;
+const int FrontLineEnemy::HEALTH_SHIELD_TRIGGER = 1;
 
 FrontLineEnemy::FrontLineEnemy()
     : Enemy()
+    , health(BASE_HEALTH)
+    , isShielded(false)
 {
     this->activate();
 }
@@ -17,12 +21,12 @@ FrontLineEnemy::FrontLineEnemy(const FrontLineEnemy& src)
 {
     health = src.health;
     timeLeftShield = src.timeLeftShield;
+    isShielded = src.isShielded;
 }
 
-bool FrontLineEnemy::initialize(const GameContentManager& contentManager, const sf::Vector2f& initialPosition)
+void FrontLineEnemy::initialize(const sf::Texture& texture, const sf::Vector2f& initialPosition)
 {
-    GameObject::initialize(contentManager.getFrontLineEnemyTexture(), initialPosition);
-    return true;
+    GameObject::initialize(texture, initialPosition);
 }
 
 bool FrontLineEnemy::update(float elapsedTime) 
@@ -45,20 +49,13 @@ void FrontLineEnemy::activate()
 void FrontLineEnemy::onHit()
 {
     if (!this->isShielded)
-    {
         health--;
-        if (health <= 0)
-        {
-            this->onDeath();
-        }
-    }
     
-    if (health == 1)
+    if (health == HEALTH_SHIELD_TRIGGER)
     {
         this->isShielded = true;
         health = 0;
     }
-    
 }
 
 void FrontLineEnemy::shield()
@@ -67,6 +64,6 @@ void FrontLineEnemy::shield()
     this->setColor(sf::Color::Cyan);
     if (timeLeftShield <= 0)
     {
-        this->onDeath();
+        this->onDeath(DESTRUCTION_SCORE, *this);
     }
 }
