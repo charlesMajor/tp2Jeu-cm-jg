@@ -21,7 +21,7 @@ public:
 	virtual bool handleEvents(sf::RenderWindow& window) override;
 	void serializeTab();
 	bool unserializeTab();
-	void replaceIfBetter();
+	void fillLists();
 private:
 	EndGameContentManager contentManager;
 
@@ -32,7 +32,12 @@ private:
 	sf::Text leaderboardText;
 	sf::Text backToTitleText;
 	sf::Text nomText;
+	sf::Text currentNameText;
 	sf::Music endMusic;
+
+	std::string currentName;
+	char currentLetter;
+	bool letterPressed = false;
 
 	std::list<sf::Text> bestPlayers;
 	std::list<sf::Text> bestScores;
@@ -42,7 +47,11 @@ private:
 	bool drawNomText = false;
 	bool needsToEnterName = false;
 	int changeNomTextState = 30;
-	int placeInLeaderBoard;
+	int placeInLeaderBoard = 6;
 	bool backToTitle = false;
+	bool listsAreFilled = false;
+
+	bool pressedEnter = false;
+	bool pressedBackspace = false;
 };
 

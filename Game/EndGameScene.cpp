@@ -20,21 +20,74 @@ SceneType EndGameScene::update()
 {
     SceneType retval = getSceneType();
 
-    changeNomTextState = std::max(0, changeNomTextState - 1);
-    if (changeNomTextState == 0)
+    if (needsToEnterName)
     {
-        if (drawNomText)
+        if (currentName.length() < 3)
         {
-            drawNomText = false;
+            nomText.setString("Entrez un nom à trois lettres");
+            nomText.setPosition(190, 250);
         }
         else
         {
-            drawNomText = true;
+            nomText.setString("Appuyez sur Enter pour accepter");
+            nomText.setPosition(150, 250);
         }
-        changeNomTextState = 30;
-    }
+        changeNomTextState = std::max(0, changeNomTextState - 1);
+        if (changeNomTextState == 0)
+        {
+            if (drawNomText)
+            {
+                drawNomText = false;
+            }
+            else
+            {
+                drawNomText = true;
+            }
+            changeNomTextState = 30;
+        }
+        
+        if (pressedBackspace)
+        {
+            if (EndGameScene::currentName.length() > 0)
+            {
+                std::string oldName = EndGameScene::currentName;
+                EndGameScene::currentName = "";
+                for (int i = 0; i < oldName.length() - 1; i++)
+                {
+                    EndGameScene::currentName += oldName[i];
+                }
+                currentNameText.setString(EndGameScene::currentName);
+            }
+            pressedBackspace = false;
+        }
 
-    if (this->backToTitle)
+        if (letterPressed)
+        {
+            if (currentName.length() < 3)
+            {
+                currentName += currentLetter;
+                currentNameText.setString(currentName);
+            }
+            letterPressed = false;
+        }
+
+        if (pressedEnter)
+        {
+            if (currentName.length() == 3)
+            {
+                needsToEnterName = false;
+                drawNomText = false;
+                
+            }
+            pressedEnter = false;
+        }
+        backToTitle = false;
+    }
+    else if (!needsToEnterName && !listsAreFilled)
+    {
+        fillLists();
+    }
+    else if (this->backToTitle)
     {
         retval = SceneType::NONE;
     }
@@ -55,11 +108,34 @@ void EndGameScene::draw(sf::RenderWindow& window) const
 {
     window.draw(gameOverText);
     window.draw(leaderboardText);
-    window.draw(backToTitleText);
+    
     if (drawNomText)
     {
         window.draw(nomText);
     }
+
+    if (needsToEnterName)
+    {
+        window.draw(currentNameText);
+    }
+    else
+    {
+        window.draw(backToTitleText);
+    }
+
+    if (listsAreFilled)
+    {
+        for (sf::Text currentPlayer : bestPlayers)
+        {
+            window.draw(currentPlayer);
+        }
+
+        for (sf::Text currentScore : bestScores)
+        {
+            window.draw(currentScore);
+        }
+    }
+    
 }
 
 bool EndGameScene::uninit()
@@ -102,6 +178,11 @@ bool EndGameScene::init()
     nomText.setOutlineColor(sf::Color::White);
     nomText.setPosition(190, 250);
 
+    currentNameText.setFont(contentManager.getFont());
+    currentNameText.setCharacterSize(25);
+    currentNameText.setOutlineColor(sf::Color::White);
+    currentNameText.setPosition(330, 300);
+
     if (!endMusic.openFromFile("Assets\\Music\\GameTheme.ogg"))
     {
         return false;
@@ -109,66 +190,22 @@ bool EndGameScene::init()
     endMusic.setLoop(true);
     endMusic.play();
 
-    //std::cout << filePath << std::endl;
-
-    /*EndGameScene::baseTable[0].score = 10000;
-    EndGameScene::baseTable[0].name[0] = 'J';
-    EndGameScene::baseTable[0].name[1] = 'A';
-    EndGameScene::baseTable[0].name[2] = 'M';*/
-    //std::string name0 = "JAM";
-    //sprintf_s(baseTable[0].name, "%s", name0.c_str());
-    //for (int j = 0; j < name0.length(); j++)
-      //  baseTable[0].name[j] = name0[j];
-
-    /*EndGameScene::baseTable[1].score = 2100;
-    EndGameScene::baseTable[1].name[0] = 'P';
-    EndGameScene::baseTable[1].name[1] = 'O';
-    EndGameScene::baseTable[1].name[2] = 'G';*/
-    //std::string name1 = "POG";
-    //sprintf_s(baseTable[1].name, "%s", name1.c_str());
-    //for (int j = 0; j < name0.length(); j++)
-      //  baseTable[1].name[j] = name0[j];
-
-    /*EndGameScene::baseTable[2].score = 1050;
-    EndGameScene::baseTable[2].name[0] = 'C';
-    EndGameScene::baseTable[2].name[1] = 'H';
-    EndGameScene::baseTable[2].name[2] = 'A';*/
-    //std::string name2 = "CHA";
-    //sprintf_s(baseTable[2].name, "%s", name2.c_str());
-    //for (int j = 0; j < name0.length(); j++)
-      //  baseTable[2].name[j] = name0[j];
-
-    /*EndGameScene::baseTable[3].score = 550;
-    EndGameScene::baseTable[3].name[0] = 'E';
-    EndGameScene::baseTable[3].name[1] = 'L';
-    EndGameScene::baseTable[3].name[2] = 'O';*/
-    //std::string name3 = "ELO";
-    //sprintf_s(baseTable[3].name, "%s", name3.c_str());
-    //for (int j = 0; j < name0.length(); j++)
-      //  baseTable[3].name[j] = name0[j];
-
-    /*EndGameScene::baseTable[4].score = 100;
-    EndGameScene::baseTable[4].name[0] = 'D';
-    EndGameScene::baseTable[4].name[1] = 'I';
-    EndGameScene::baseTable[4].name[2] = 'F';*/
-    //std::string name4 = "DIF";
-    //sprintf_s(baseTable[4].name, "%s", name4.c_str());
-    //for (int j = 0; j < name0.length(); j++)
-      //  baseTable[4].name[j] = name0[j];
-
-    //std::cout << filePath << std::endl;
-
-    //serializeTab();
     unserializeTab();
     
     std::cout << playerScore << std::endl;
 
     for (int i = 0; i < AMOUNT_IN_LEADERBOARD; i++)
     {
-        std::cout << newTable[i].name << std::endl;
-        std::cout << newTable[i].score << std::endl;
-
-        if (newTable[i].score > )
+        if (newTable[i].score < playerScore)
+        {
+            if (placeInLeaderBoard == 6)
+            {
+                placeInLeaderBoard = i;
+                needsToEnterName = true;
+                EndGameScene::currentName = "";
+                currentNameText.setString(EndGameScene::currentName);
+            }
+        }
     }
 
     return true;
@@ -188,9 +225,147 @@ bool EndGameScene::handleEvents(sf::RenderWindow& window)
         }
         if (event.type == sf::Event::KeyPressed)
         {
-            if (event.key.code == sf::Keyboard::Key::Enter)
+            if (event.key.code == sf::Keyboard::Key::Escape)
             {
                 this->backToTitle = true;
+            }
+            else if (event.key.code == sf::Keyboard::Key::Enter)
+            {
+                this->pressedEnter = true;
+            }
+            else if (event.key.code == sf::Keyboard::Key::Backspace)
+            {
+                this->pressedBackspace = true;
+            }
+            else if (event.key.code == sf::Keyboard::Key::A)
+            {
+                this->currentLetter = 'A';
+                this->letterPressed = true;
+            }
+            else if (event.key.code == sf::Keyboard::Key::B)
+            {
+                this->currentLetter = 'B';
+                this->letterPressed = true;
+            }
+            else if (event.key.code == sf::Keyboard::Key::C)
+            {
+                this->currentLetter = 'C';
+                this->letterPressed = true;
+            }
+            else if (event.key.code == sf::Keyboard::Key::D)
+            {
+                this->currentLetter = 'D';
+                this->letterPressed = true;
+            }
+            else if (event.key.code == sf::Keyboard::Key::E)
+            {
+                this->currentLetter = 'E';
+                this->letterPressed = true;
+            }
+            else if (event.key.code == sf::Keyboard::Key::F)
+            {
+                this->currentLetter = 'F';
+                this->letterPressed = true;
+            }
+            else if (event.key.code == sf::Keyboard::Key::G)
+            {
+                this->currentLetter = 'G';
+                this->letterPressed = true;
+            }
+            else if (event.key.code == sf::Keyboard::Key::H)
+            {
+                this->currentLetter = 'H';
+                this->letterPressed = true;
+            }
+            else if (event.key.code == sf::Keyboard::Key::I)
+            {
+                this->currentLetter = 'I';
+                this->letterPressed = true;
+            }
+            else if (event.key.code == sf::Keyboard::Key::J)
+            {
+                this->currentLetter = 'J';
+                this->letterPressed = true;
+            }
+            else if (event.key.code == sf::Keyboard::Key::K)
+            {
+                this->currentLetter = 'K';
+                this->letterPressed = true;
+            }
+            else if (event.key.code == sf::Keyboard::Key::L)
+            {
+                this->currentLetter = 'L';
+                this->letterPressed = true;
+            }
+            else if (event.key.code == sf::Keyboard::Key::M)
+            {
+                this->currentLetter = 'M';
+                this->letterPressed = true;
+            }
+            else if (event.key.code == sf::Keyboard::Key::N)
+            {
+                this->currentLetter = 'N';
+                this->letterPressed = true;
+            }
+            else if (event.key.code == sf::Keyboard::Key::O)
+            {
+                this->currentLetter = 'O';
+                this->letterPressed = true;
+            }
+            else if (event.key.code == sf::Keyboard::Key::P)
+            {
+                this->currentLetter = 'P';
+                this->letterPressed = true;
+            }
+            else if (event.key.code == sf::Keyboard::Key::Q)
+            {
+                this->currentLetter = 'Q';
+                this->letterPressed = true;
+            }
+            else if (event.key.code == sf::Keyboard::Key::R)
+            {
+                this->currentLetter = 'R';
+                this->letterPressed = true;
+            }
+            else if (event.key.code == sf::Keyboard::Key::S)
+            {
+                this->currentLetter = 'S';
+                this->letterPressed = true;
+            }
+            else if (event.key.code == sf::Keyboard::Key::T)
+            {
+                this->currentLetter = 'T';
+                this->letterPressed = true;
+            }
+            else if (event.key.code == sf::Keyboard::Key::U)
+            {
+                this->currentLetter = 'U';
+                this->letterPressed = true;
+            }
+            else if (event.key.code == sf::Keyboard::Key::V)
+            {
+                this->currentLetter = 'V';
+                this->letterPressed = true;
+            }
+            else if (event.key.code == sf::Keyboard::Key::W)
+            {
+                this->currentLetter = 'W';
+                this->letterPressed = true;
+            }
+            else if (event.key.code == sf::Keyboard::Key::X)
+            {
+                this->currentLetter = 'X';
+                this->letterPressed = true;
+            }
+            else if (event.key.code == sf::Keyboard::Key::Y)
+            {
+                this->currentLetter = 'Y';
+                this->letterPressed = true;
+            }
+            else if (event.key.code == sf::Keyboard::Key::Z)
+            {
+                this->currentLetter = 'Z';
+                this->letterPressed = true;
             }
         }
     }
@@ -214,7 +389,57 @@ bool EndGameScene::unserializeTab()
     ifs.close();
 }
 
-void EndGameScene::replaceIfBetter()
+void EndGameScene::fillLists()
 {
+    for (int i = 0; i < AMOUNT_IN_LEADERBOARD; i++)
+    {
+        std::cout << newTable[i].name << std::endl;
+        std::cout << newTable[i].score << std::endl;
 
+        if (i < placeInLeaderBoard)
+        {
+            for (int x = 0; x < 3; x++)
+            {
+                baseTable[i].name[x] = newTable[i].name[x];
+            }
+            baseTable[i].score = newTable[i].score;
+        }
+        if (i == placeInLeaderBoard)
+        {
+            baseTable[i].name[0] = EndGameScene::currentName[0];
+            baseTable[i].name[1] = EndGameScene::currentName[1];
+            baseTable[i].name[2] = EndGameScene::currentName[2];
+            baseTable[i].score = playerScore;
+        }
+        else if (i > placeInLeaderBoard)
+        {
+            for (int x = 0; x < 3; x++)
+            {
+                baseTable[i].name[x] = newTable[i - 1].name[x];
+            }
+            baseTable[i].score = newTable[i - 1].score;
+        }
+    }
+
+    for (int i = 0; i < AMOUNT_IN_LEADERBOARD; i++)
+    {
+        sf::Text currentPlayer;
+        currentPlayer.setString(baseTable[i].name);
+        currentPlayer.setFont(contentManager.getFont());
+        currentPlayer.setCharacterSize(35);
+        currentPlayer.setOutlineColor(sf::Color::White);
+        currentPlayer.setPosition(250, i * 40 + 300);
+        bestPlayers.push_back(currentPlayer);
+
+        sf::Text currentScore;
+        currentScore.setString(std::to_string(baseTable[i].score));
+        currentScore.setFont(contentManager.getFont());
+        currentScore.setCharacterSize(35);
+        currentScore.setOutlineColor(sf::Color::White);
+        currentScore.setPosition(400, i * 40 + 300);
+        bestScores.push_back(currentScore);
+    }
+    listsAreFilled = true;
+
+    serializeTab();
 }
