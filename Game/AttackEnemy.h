@@ -5,6 +5,7 @@ class AttackEnemy : public Enemy
 {
 	static const int BASE_HEALTH;
 	static const int MAX_RECOIL;
+	static const int DESTRUCTION_SCORE;
 public:
 	AttackEnemy();
 	AttackEnemy(const AttackEnemy& src);

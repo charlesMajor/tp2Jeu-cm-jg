@@ -4,7 +4,8 @@
 #include "GameScene.h"
 
 const int AttackEnemy::BASE_HEALTH = 2;
-const int AttackEnemy::MAX_RECOIL = 120;
+const int AttackEnemy::MAX_RECOIL = 100;
+const int AttackEnemy::DESTRUCTION_SCORE = 100;
 
 AttackEnemy::AttackEnemy()
     : Enemy()
@@ -52,7 +53,7 @@ void AttackEnemy::onHit()
     health--;
     if (health <= 0)
     {
-        this->onDeath();
+        this->onDeath(DESTRUCTION_SCORE, *this);
     }
 }
 

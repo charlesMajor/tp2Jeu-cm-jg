@@ -13,9 +13,11 @@
 #include "BulletPool.h"
 #include "EnemyPool.h"
 #include "BonusPool.h"
+#include "Subscriber.h"
 
 class GameScene :
-  public Scene
+  public Scene,
+  public Subscriber
 {
 public:
   static const float TIME_PER_FRAME;
@@ -26,9 +28,12 @@ public:
   static const int MAX_RECOIL;
   static const int NB_BULLETS;
   static const int NB_BONUS;
+  static const int CHANCE_OF_BONUS;
+  static const int SCORE_PER_SECOND;
 
   static const int PLAYER_BULLET_DIRECTION;
   static const int ENEMY_BULLET_DIRECTION;
+  static const int BONUS_DIRECTION;
 
   static const int AMOUNT_FRONT_ENEMIES;
   static const int AMOUNT_FRONT_ENEMIES_POOL;
@@ -51,6 +56,7 @@ public:
   virtual bool init() override;
   virtual bool uninit() override;
   virtual bool handleEvents(sf::RenderWindow& window) override;
+  void notify(Event event, const void* data) override;
 
 private:
   GameContentManager contentManager;
@@ -58,6 +64,8 @@ private:
 
   sf::Sprite backgroundSprite;
   sf::Music gameMusic;
+  sf::Sound enemyDeathSound;
+  sf::Sound bonusAcquiredSound;
 
   EnemyPool<FrontLineEnemy> frontLineEnemyPool;
   EnemyPool<AttackEnemy> attackEnemyPool;
@@ -76,9 +84,11 @@ private:
   void checkBulletCollisionWithEnemy(Bullet& bullet);
   void onbulletCollidesWithEnemy(Bullet& bullet, Enemy& enemy);
   void fireBullet(Bullet& bullet, GameObject from, int angle);
+  void enemyDeathBonus(Enemy& enemy);
 
   int score;
   int recoil = 0;
+  bool goToEndScene;
   bool wentToEndScene;
   float remainingTimeInGame;
   bool isInvincible;

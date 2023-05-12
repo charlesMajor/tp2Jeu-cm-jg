@@ -7,13 +7,12 @@ class BonusPool : public Pool<T>
 {
 public:
 	BonusPool();
-	void init(int nbObject, const sf::Texture& texture, const sf::Vector2f& initialPosition, const sf::SoundBuffer& sb);
+	void init(int nbObject, const sf::Texture& texture, const sf::Vector2f& initialPosition);
 
 private:
 	void createNewObject() override;
 	sf::Texture texture;
 	sf::Vector2f initialPosition;
-	sf::SoundBuffer sb;
 };
 
 template<class T>
@@ -22,11 +21,10 @@ BonusPool<T>::BonusPool()
 }
 
 template<class T>
-void BonusPool<T>::init(int nbObject, const sf::Texture& texture, const sf::Vector2f& initialPosition, const sf::SoundBuffer& sb)
+void BonusPool<T>::init(int nbObject, const sf::Texture& texture, const sf::Vector2f& initialPosition)
 {
 	this->texture = texture;
 	this->initialPosition = initialPosition;
-	this->sb = sb;
 
 	for (int i = 0; i < nbObject; i++)
 	{
@@ -39,6 +37,6 @@ void BonusPool<T>::createNewObject()
 {
 	T obj;
 	obj.initialize(texture, initialPosition);
-	obj.setBonusBuffer(sb);
+	obj.deactivate();
 	Pool<T>::getPool().push_back(obj);
 }

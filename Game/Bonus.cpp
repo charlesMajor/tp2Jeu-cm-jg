@@ -2,8 +2,10 @@
 #include "ContentManager.h"
 #include "game.h"
 #include "Bonus.h"
+#include "Publisher.h"
 
-const float Bonus::BONUS_SPEED = 600;
+const float Bonus::BONUS_SPEED = 300;
+const float Bonus::BONUS_SCORE = 150;
 
 Bonus::Bonus(const sf::Vector2f& initialPosition)
 	: GameObject()
@@ -36,16 +38,10 @@ Bonus::Bonus(const Bonus& src)
 void Bonus::initialize(const sf::Texture& texture, const sf::Vector2f& initialPosition)
 {
 	GameObject::initialize(texture, initialPosition);
-	setOrigin(texture.getSize().x / 2.0f, texture.getSize().y / 2.0f);
 }
 
 void Bonus::deactivate()
 {
-	this->soundBonus.play();
 	GameObject::deactivate();
-}
-
-void Bonus::setBonusBuffer(const sf::SoundBuffer& sb)
-{
-	soundBonus.setBuffer(sb);
+	Publisher::notifySubscribers(Event::BONUS_ACQUIRED, nullptr);
 }

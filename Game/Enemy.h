@@ -13,7 +13,7 @@ public:
 	virtual bool update(float elapsedTime) override;
 	virtual void activate(bool leftFirst, int distance);
 	virtual void onHit() = 0;
-	virtual void onDeath();
+	virtual void onDeath(int score, Enemy& enemy);
 private:
 	bool leftFirst;
 	int distance;

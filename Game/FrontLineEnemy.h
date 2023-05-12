@@ -5,6 +5,8 @@ class FrontLineEnemy : public Enemy
 {
 	static const int BASE_HEALTH;
 	static const int SHIELD_TIME;
+	static const int DESTRUCTION_SCORE;
+	static const int HEALTH_SHIELD_TRIGGER;
 public:
 	FrontLineEnemy();
 	FrontLineEnemy(const FrontLineEnemy& src);
@@ -16,5 +18,5 @@ public:
 private:
 	int health;
 	bool isShielded;
-	float timeLeftShield;
+	int timeLeftShield;
 };

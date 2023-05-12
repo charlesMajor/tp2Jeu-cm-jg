@@ -2,17 +2,22 @@
 #include "Enemy.h"
 #include "game.h"
 #include "Publisher.h"
+#include "EnemyDeathData.h"
 #include <iostream>
 
 const float Enemy::MOVE_SPEED = 75.0f;
 
 Enemy::Enemy()
   : GameObject()
+  , distance(0)
+  , leftFirst(false)
 {
 }
 
 Enemy::Enemy(const Enemy& src)
     : GameObject(src)
+    , distance(src.distance)
+    , leftFirst(src.leftFirst)
 {
     setTexture(*src.getTexture());
     setPosition(src.getPosition());
@@ -31,7 +36,7 @@ void Enemy::draw(sf::RenderWindow& window) const
 bool Enemy::isCloseTo(const sf::Vector2f& position)
 {
     bool isClose = false;
-    float threshold = 0.1;
+    float threshold = 0.1f;
     if ((getPosition().x - position.x) * (getPosition().x - position.x) + (getPosition().y - position.y) * (getPosition().y - position.y) < threshold * threshold)
         isClose = true;
     return isClose;
@@ -79,7 +84,12 @@ void Enemy::activate(bool leftFirst, int distance)
    GameObject::activate();
 }
 
-void Enemy::onDeath()
+void Enemy::onDeath(int score, Enemy& enemy)
 {
     this->deactivate();
+
+    EnemyDeathData data;
+    data.score = score;
+    data.enemy = &enemy;
+    Publisher::notifySubscribers(Event::ENEMY_DEATH, &data);
 }

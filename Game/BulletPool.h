@@ -40,5 +40,6 @@ void BulletPool<T>::createNewObject()
 	T obj;
 	obj.initialize(texture, initialPosition);
 	obj.setShotBuffer(sb);
+	obj.deactivate();
 	Pool<T>::getPool().push_back(obj);
 }

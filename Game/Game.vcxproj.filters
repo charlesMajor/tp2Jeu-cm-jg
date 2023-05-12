@@ -78,9 +78,6 @@
     <ClInclude Include="scenetype.h">
       <Filter>Fichiers d%27en-tête\Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="Pokeball.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
@@ -156,6 +153,18 @@
     <ClInclude Include="BonusPool.h">
       <Filter>Fichiers d%27en-tête\Pool</Filter>
     </ClInclude>
+    <ClInclude Include="event.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Publisher.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Subscriber.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyDeathData.h">
+      <Filter>Fichiers d%27en-tête\Enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="game.cpp">
@@ -175,9 +184,6 @@
     </ClCompile>
     <ClCompile Include="Scene.cpp">
       <Filter>Fichiers sources\Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="Pokeball.cpp">
-      <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Fichiers sources</Filter>
@@ -237,6 +243,9 @@
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="Bonus.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Publisher.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>

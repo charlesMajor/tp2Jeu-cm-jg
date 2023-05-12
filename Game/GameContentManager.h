@@ -14,6 +14,7 @@ public:
 	const sf::Texture& getFrontLineEnemyTexture() const;
 	const sf::Texture& getAttackEnemyTexture() const;
 	const sf::Texture& getBackLineEnemyTexture() const;
+	const sf::SoundBuffer& getEnemyDeathSoundBuffer() const;
 	
 	const sf::Texture& getBackgroundTexture() const;
 	const sf::Texture& getBulletTexture() const;
@@ -29,6 +30,7 @@ private:
 	sf::Texture attackEnemyTexture;
 	sf::Texture backLineEnemyTexture;
 	sf::SoundBuffer enemyShotSoundBuffer;
+	sf::SoundBuffer enemyDeathSoundBuffer;
 	
 	sf::Texture backgroundTexture;
 	sf::Texture bulletTexture;

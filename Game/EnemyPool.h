@@ -37,5 +37,6 @@ void EnemyPool<T>::createNewObject()
 {
 	T obj;
 	obj.initialize(texture, initialPosition);
+	obj.deactivate();
 	Pool<T>::getPool().push_back(obj);
 }

@@ -168,6 +168,7 @@
     <ClInclude Include="ContentManager.h" />
     <ClInclude Include="EndGameContentManager.h" />
     <ClInclude Include="EndGameScene.h" />
+    <ClInclude Include="EnemyDeathData.h" />
     <ClInclude Include="EnemyPool.h" />
     <ClInclude Include="event.h" />
     <ClInclude Include="FrontLineEnemy.h" />
@@ -180,7 +181,6 @@
     <ClInclude Include="LinearAnimation.h" />
     <ClInclude Include="PlayerExplodingAnimation.h" />
     <ClInclude Include="PlayerIdleAnimation.h" />
-    <ClInclude Include="Pokeball.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Pool.h" />
@@ -214,7 +214,6 @@
     <ClCompile Include="LinearAnimation.cpp" />
     <ClCompile Include="PlayerExplodingAnimation.cpp" />
     <ClCompile Include="PlayerIdleAnimation.cpp" />
-    <ClCompile Include="Pokeball.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Publisher.cpp" />
