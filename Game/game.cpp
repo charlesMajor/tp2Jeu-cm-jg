@@ -9,7 +9,7 @@
 const int Game::WORLD_WIDTH = 720;
 const int Game::WORLD_HEIGHT = 960;
 const unsigned int Game::FRAME_RATE = 60;
-const unsigned int Game::DEFAULT_GAME_TIME = 60;
+const unsigned int Game::DEFAULT_GAME_TIME = 1/*60*/;
 const unsigned int Game::GAME_WIDTH = 720;
 const unsigned int Game::GAME_HEIGHT = 960;
 
